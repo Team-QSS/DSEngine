@@ -116,6 +116,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\Utils\Logger.cpp" />
+    <ClCompile Include="src\Utils\Singleton.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Defines.h" />
+    <ClInclude Include="src\Utils\Logger.h" />
+    <ClInclude Include="src\Utils\Singleton.h" />
+    <ClInclude Include="src\Utils\Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Utils\Singleton.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
