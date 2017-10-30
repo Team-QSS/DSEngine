@@ -1,4 +1,5 @@
 #include "Singleton.h"
+#include "Logger.h"
 
 namespace DS
 {
@@ -8,9 +9,9 @@ namespace DS
 	template<typename T>
 	void Singleton<T>::createInstance()
 	{
-		if (s_Instance)
+		if (s_Instance != nullptr)
 		{
-			//중복 초기화로 인한 경고 출력
+			LOG(LogLevel::Warning, "이미 초기화된 싱글턴 객체 초기화 시도")
 		}
 		else
 		{
@@ -23,7 +24,7 @@ namespace DS
 	{
 		if (s_Instance == nullptr)
 		{
-			//널포인터 참조 시도로 인한 에러 출력
+			LOG(LogLevel::Error, "미초기화 상태의 싱글턴 객체 접근 시도")
 		}
 
 		return *s_Instance;
@@ -34,7 +35,7 @@ namespace DS
 	{
 		if (s_Instance == nullptr)
 		{
-			//미초기화 상태의 접근으로 인한 에러 출력
+			LOG(LogLevel::Warning, "미초기화 상태의 싱글턴 객체 할당 해제 시도")
 		}
 		else
 		{

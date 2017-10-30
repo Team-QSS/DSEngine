@@ -111,14 +111,25 @@ namespace DS
 			tm* curTime = new tm();
 			localtime_s(curTime, &curTimet);
 
-			char curTimeBuffer[30];
-			strftime(curTimeBuffer, sizeof(curTimeBuffer), "%y/%m/%d-%X", curTime);
-			std::ofstream logFileStream("./Log-" + std::string(curTimeBuffer));
+			try
+			{
+				char curTimeBuffer[60];
+				strftime(curTimeBuffer, sizeof(curTimeBuffer), "%y/%m/%d-%X", curTime);
+				std::ofstream logFileStream;
+				logFileStream.exceptions(std::ios::failbit | std::ios::eofbit | std::ios::badbit);
+				std::cout << "Log-" + std::string(curTimeBuffer) << std::endl << m_LogBuffer.str() << std::endl;
+				logFileStream.open("Log-" + std::string(curTimeBuffer) + ".txt");
+				
+				logFileStream << m_LogBuffer.str() << std::endl;
+				m_LogBuffer.clear();
+				logFileStream.close();
+			}
+			catch (const std::ios_base::failure& e)
+			{
+				LOG(LogLevel::Error, e.what())
+			}
 
-			std::cout << "Log-" + std::string(curTimeBuffer) << std::endl << m_LogBuffer.str() << std::endl;
-			logFileStream << m_LogBuffer.str() << std::endl;
-			m_LogBuffer.clear();
-			logFileStream.close();
+			
 
 			delete curTime;
 		}

@@ -27,9 +27,6 @@
     <ClCompile Include="src\Utils\Logger.cpp">
       <Filter>소스 파일\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utils\Singleton.cpp">
-      <Filter>소스 파일\Utils</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Utils\Logger.h">
