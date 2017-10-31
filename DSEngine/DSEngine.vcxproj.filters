@@ -19,6 +19,12 @@
     <Filter Include="소스 파일\Utils">
       <UniqueIdentifier>{d7c5d971-dfba-42ba-83b6-c26416dc5884}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Window">
+      <UniqueIdentifier>{a7bc563d-0031-46f4-9b2a-ee0fd55e05f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Window">
+      <UniqueIdentifier>{29672c7c-e21a-4bd4-8111-419e014922e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -26,6 +32,9 @@
     </ClCompile>
     <ClCompile Include="src\Utils\Logger.cpp">
       <Filter>소스 파일\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Window\Window.cpp">
+      <Filter>소스 파일\Window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -40,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="src\Defines.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Window\Window.h">
+      <Filter>헤더 파일\Window</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

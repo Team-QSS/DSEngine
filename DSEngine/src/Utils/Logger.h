@@ -1,6 +1,8 @@
 #pragma once
 #include "Utils.h"
 #include "../Defines.h"
+#include <string>
+#include <sstream>
 
 namespace DS
 {

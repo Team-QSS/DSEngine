@@ -11,11 +11,6 @@ int main()
 	DS::Logger::getInstance().initialize(true);
 	LOG(DS::LogLevel::Info, "Log 1");
 
-
 	DS::Logger::destroyInstance();
-	int a;
-	cin >> a;
-
-	
 	return 0;
 }
