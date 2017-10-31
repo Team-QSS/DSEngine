@@ -26,7 +26,7 @@ namespace DS
 		Logger() = default;
 		virtual ~Logger();
 
-		void initialize(bool useConsole);
+		void initialize(bool useConsole, bool useFile = false);
 
 		void log(LogLevel level, const std::string& tag, const std::string& message, const BreakInfo& breakInfo);
 		void log(LogLevel level, const std::string& message, const BreakInfo& breakInfo);
@@ -36,6 +36,7 @@ namespace DS
 
 	private:
 		bool m_UseConsole;
+		bool m_UseFile;
 		std::stringstream m_LogBuffer;
 	};
 }

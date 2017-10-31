@@ -4,6 +4,7 @@
 #include <chrono>
 #include <fstream>
 #include <ctime>
+#include <cstdio>
 
 namespace DS
 {
@@ -12,9 +13,10 @@ namespace DS
 		writeLogFile();
 	}
 
-	void Logger::initialize(bool useConsole)
+	void Logger::initialize(bool useConsole, bool useFile)
 	{
 		m_UseConsole = useConsole;
+		m_UseFile = useFile;
 	}
 
 	void Logger::log(LogLevel level, const std::string& message, const BreakInfo& breakInfo)
@@ -104,7 +106,7 @@ namespace DS
 
 	void Logger::writeLogFile()
 	{
-		if (!(m_LogBuffer.beg == m_LogBuffer.cur))
+		if (!(m_LogBuffer.beg == m_LogBuffer.cur) && m_UseFile)
 		{
 			std::chrono::system_clock::time_point curTimePoint = std::chrono::system_clock::now();
 			time_t curTimet = std::chrono::system_clock::to_time_t(curTimePoint);
@@ -113,13 +115,13 @@ namespace DS
 
 			try
 			{
-				char curTimeBuffer[60];
-				strftime(curTimeBuffer, sizeof(curTimeBuffer), "%y/%m/%d-%X", curTime);
+				char curTimeBuffer[60] = { 0 };
+				strftime(curTimeBuffer, sizeof(curTimeBuffer), "Log%y-%m-%d-%H-%M-%S.txt", curTime);
 				std::ofstream logFileStream;
 				logFileStream.exceptions(std::ios::failbit | std::ios::eofbit | std::ios::badbit);
 				std::cout << "Log-" + std::string(curTimeBuffer) << std::endl << m_LogBuffer.str() << std::endl;
-				logFileStream.open("Log-" + std::string(curTimeBuffer) + ".txt");
-				
+				logFileStream.open(std::string(curTimeBuffer));
+
 				logFileStream << m_LogBuffer.str() << std::endl;
 				m_LogBuffer.clear();
 				logFileStream.close();
@@ -129,7 +131,16 @@ namespace DS
 				LOG(LogLevel::Error, e.what())
 			}
 
-			
+
+			//char curTimeBuffer[60];
+			//strftime(curTimeBuffer, sizeof(curTimeBuffer), "%y/%m/%d-%X", curTime);
+
+			//FILE* fp;
+			//fopen_s(&fp, std::string("Log-" + std::string(curTimeBuffer) + ".txt").c_str(), "wt");
+
+			//fprintf_s(fp, "%s\n", m_LogBuffer.str().c_str());
+
+			//fclose(fp);
 
 			delete curTime;
 		}
