@@ -39,6 +39,12 @@
     <ClCompile Include="src\Utils\Utils.cpp">
       <Filter>소스 파일\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="src\BaseGame.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DSEngine.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Utils\Logger.h">
@@ -55,6 +61,12 @@
     </ClInclude>
     <ClInclude Include="src\Window\Window.h">
       <Filter>헤더 파일\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BaseGame.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DSEngine.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
