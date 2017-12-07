@@ -4,3 +4,7 @@
 
 #include "Logger.h"
 
+namespace DS
+{
+	int terminate(int exitCode);
+}
