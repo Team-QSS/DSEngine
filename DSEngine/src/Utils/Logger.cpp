@@ -131,17 +131,6 @@ namespace DS
 				LOG(LogLevel::Error, e.what())
 			}
 
-
-			//char curTimeBuffer[60];
-			//strftime(curTimeBuffer, sizeof(curTimeBuffer), "%y/%m/%d-%X", curTime);
-
-			//FILE* fp;
-			//fopen_s(&fp, std::string("Log-" + std::string(curTimeBuffer) + ".txt").c_str(), "wt");
-
-			//fprintf_s(fp, "%s\n", m_LogBuffer.str().c_str());
-
-			//fclose(fp);
-
 			delete curTime;
 		}
 	}

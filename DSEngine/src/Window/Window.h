@@ -1,5 +1,7 @@
 #pragma once
 #include <Windows.h>
+#include <assert.h>
+#include <DirectXMath.h>
 #include "../Utils/Utils.h"
 
 namespace DS
@@ -10,7 +12,7 @@ namespace DS
 		Window();
 		~Window();
 
-		void initialize(HINSTANCE instanceHandle);
+		void initialize(HINSTANCE instanceHandle, DirectX::XMINT2 size);
 
 	private:
 		HWND m_WindowHandle;
