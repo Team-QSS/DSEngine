@@ -14,6 +14,8 @@ namespace DS
 
 		void initialize(HINSTANCE instanceHandle, DirectX::XMINT2 size);
 
+		void peekMessage();
+
 	private:
 		HWND m_WindowHandle;
 
