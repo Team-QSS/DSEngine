@@ -3,7 +3,9 @@
 namespace DS
 {
 	Window::Window() :
-		m_IsInitialized(false)
+		m_IsInitialized(false),
+		m_WindowHandle(nullptr),
+		m_ShouldClose(false)
 	{
 
 	}
@@ -28,7 +30,7 @@ namespace DS
 		wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 		wc.hInstance = instanceHandle;
 		wc.lpfnWndProc = NULL;
-		wc.lpszClassName = "a";
+		wc.lpszClassName = "DSEngine";
 		wc.lpszMenuName = "a";
 		wc.style = CS_HREDRAW | CS_VREDRAW;
 
@@ -38,7 +40,7 @@ namespace DS
 			terminate(0);
 		}
 
-		m_WindowHandle = CreateWindow("a", "a", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, size.x, size.y, 0, 0, instanceHandle, 0);
+		m_WindowHandle = CreateWindow("DSEngine", "a", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, size.x, size.y, 0, 0, instanceHandle, 0);
 
 		if (!m_WindowHandle)
 		{
@@ -48,5 +50,30 @@ namespace DS
 
 		ShowWindow(m_WindowHandle, SW_SHOWNORMAL);
 		UpdateWindow(m_WindowHandle);
+	}
+
+	void Window::peekMessage()
+	{
+		MSG msg = {};
+		while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+
+			if (msg.message == WM_QUIT)
+			{
+				m_ShouldClose = true;
+			}
+		}
+	}
+
+	bool Window::shouldClose() const
+	{
+		return m_ShouldClose;
+	}
+
+	bool Window::changeWindowTitle(const char* title)
+	{
+		return SetWindowText(m_WindowHandle, title) != 0;
 	}
 }
