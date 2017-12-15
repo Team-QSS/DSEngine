@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <map>
 #include "../Component/Component.h"
 
 namespace DS
@@ -38,13 +39,14 @@ namespace DS
 
 		void setInvisible(bool invisible);
 
-
-
 	private:
 		void update(float deltaTime);
 		void draw();
 
 		void setScene(Scene* scene);
+
+		bool m_IsActive;
+		bool m_IsInvisible;
 
 		friend void Component::update(float deltaTime);
 		friend void Component::draw();

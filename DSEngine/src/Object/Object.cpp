@@ -3,7 +3,7 @@
 
 namespace DS
 {
-	void Object::update()
+	void Object::update(float deltaTime)
 	{
 		
 	}
