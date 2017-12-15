@@ -1,13 +1,17 @@
 #pragma once
+#include <unordered_set>
+#include <iterator>
 #include "../Object/Object.h"
 
 namespace DS
 {
+	class Object;
+
 	class Scene
 	{
 	public:
-		Scene();
-		virtual ~Scene();
+		Scene() = delete;
+		virtual ~Scene() = delete;
 
 	protected:
 		virtual void onUpdate(float deltaTime) = 0;
@@ -18,8 +22,10 @@ namespace DS
 		void isObjectExist(Object* object);
 
 	private:
-		void update();
+		void update(float deltaTime);
 		void draw();
+
+		std::unordered_set<Object&> m_Objects;
 
 		friend void Object::update(float deltaTime);
 		friend void Object::draw();
