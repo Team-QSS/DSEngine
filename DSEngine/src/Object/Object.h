@@ -38,9 +38,13 @@ namespace DS
 
 		void setInvisible(bool invisible);
 
+
+
 	private:
 		void update(float deltaTime);
 		void draw();
+
+		void setScene(Scene* scene);
 
 		friend void Component::update(float deltaTime);
 		friend void Component::draw();

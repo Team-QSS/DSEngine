@@ -23,5 +23,6 @@ namespace DS
 
 		friend void Object::update(float deltaTime);
 		friend void Object::draw();
+		friend void Object::setScene(Scene* scene);
 	};
 }
