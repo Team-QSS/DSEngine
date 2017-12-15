@@ -25,7 +25,7 @@ namespace DS
 		void update(float deltaTime);
 		void draw();
 
-		std::unordered_set<Object&> m_Objects;
+		std::unordered_set<Object&> m_Objects; //현재 오브젝트들을 담는 컨테이너
 
 		friend void Object::update(float deltaTime);
 		friend void Object::draw();
