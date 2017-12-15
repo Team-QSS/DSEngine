@@ -117,15 +117,24 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\BaseGame.cpp" />
+    <ClCompile Include="src\Component\Component.cpp" />
     <ClCompile Include="src\DSEngine.cpp" />
+    <ClCompile Include="src\Input\InputManager.cpp" />
+    <ClCompile Include="src\Object\Object.cpp" />
+    <ClCompile Include="src\Scene\Scene.cpp" />
     <ClCompile Include="src\Utils\Logger.cpp" />
     <ClCompile Include="src\Utils\Utils.cpp" />
     <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseGame.h" />
+    <ClInclude Include="src\Component\Component.h" />
     <ClInclude Include="src\Defines.h" />
     <ClInclude Include="src\DSEngine.h" />
+    <ClInclude Include="src\Input\InputManager.h" />
+    <ClInclude Include="src\Object\Object.h" />
+    <ClInclude Include="src\Scene\Scene.h" />
+    <ClInclude Include="src\Scene\SceneManager.h" />
     <ClInclude Include="src\Utils\Logger.h" />
     <ClInclude Include="src\Utils\Singleton.h" />
     <ClInclude Include="src\Utils\Utils.h" />

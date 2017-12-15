@@ -1,6 +1,5 @@
 #pragma once
 #include <Windows.h>
-#include <assert.h>
 #include <DirectXMath.h>
 #include "../Utils/Utils.h"
 
@@ -18,6 +17,7 @@ namespace DS
 
 		bool shouldClose() const;
 		bool changeWindowTitle(const char* title);
+
 	private:
 		HWND m_WindowHandle;
 
