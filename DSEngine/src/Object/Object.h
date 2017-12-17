@@ -2,11 +2,10 @@
 #include <string>
 #include <vector>
 #include "../Component/Component.h"
+#include "../Scene/Scene.h"
 
 namespace DS
 {
-	class Scene;
-
 	class Object
 	{
 	public:
@@ -39,7 +38,6 @@ namespace DS
 		void setInvisible(bool invisible);
 
 
-
 	private:
 		void update(float deltaTime);
 		void draw();
@@ -48,5 +46,9 @@ namespace DS
 
 		friend void Component::update(float deltaTime);
 		friend void Component::draw();
+
+		friend void Scene::update(float deltaTime);
+		friend void Scene::draw();
+		
 	};
 }
