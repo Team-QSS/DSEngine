@@ -1,4 +1,5 @@
 #pragma once
+#include "../Object/Object.h"
 
 namespace DS
 {
@@ -16,5 +17,7 @@ namespace DS
 		void update(float deltaTime);
 		void draw();
 
+		friend void Object::update(float deltaTime);
+		friend void Object::draw();
 	};
 }

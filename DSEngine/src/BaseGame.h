@@ -25,5 +25,6 @@ namespace DS
 		BaseGame & operator=(BaseGame&&) = delete;
 		BaseGame(const BaseGame &) = delete;
 		BaseGame(BaseGame &&) = delete;
+
 	};
 }

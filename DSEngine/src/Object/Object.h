@@ -1,12 +1,12 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <map>
-#include "../Component/Component.h"
+#include <set>
 
 namespace DS
 {
 	class Scene;
+	class Component;
 
 	class Object
 	{
@@ -14,41 +14,66 @@ namespace DS
 		Object();
 		virtual ~Object();
 
-		bool isActive();
+		bool isActive() const;
+		bool isVisible() const;
 
-		bool isInvisible();
+		Scene& getScene() const;
 
-		Scene& getScene();
 	protected:
 		virtual void onUpdate(float deltaTime) = 0;
 		virtual void onDraw() {};
 
-		void addComponent(Component* component);
-		void removeComponent(Component* component);
+		void addComponent(Component& component);
+		void removeComponent(Component& component);
+		template<typename T>
+		void removeComponent();
 		template <typename T>
 		T& getComponent() const;
 		template <typename T>
 		bool isComponentExist();
 
-		void addChild(Object* object);
-		void removeChild(Object* object);
-		const std::vector<Object*>& getChildren() const;
-		void isChildExist(Object* object);
+		void addChild(Object& object);
+		void removeChild(Object& object);
+		const std::set<Object*>& getChildren() const;
+		bool isChildExist(Object& object);
 
 		void setActive(bool active);
 
-		void setInvisible(bool invisible);
+		void setVisible(bool visible);
 
 	private:
+		enum class GarbageType
+		{
+			ComponentType,
+			ObjectType
+		};
+
+		struct Garbage
+		{
+			Garbage(GarbageType type, void* element);
+			GarbageType type;
+			void* element;
+		};
+
 		void update(float deltaTime);
 		void draw();
 
 		void setScene(Scene* scene);
+		void setParent(Object* object);
+
+		void collectGarbage();
 
 		bool m_IsActive;
-		bool m_IsInvisible;
+		bool m_IsVisible;
 
-		friend void Component::update(float deltaTime);
-		friend void Component::draw();
+		Scene* m_Scene;
+		Object* m_Parent;
+
+		std::set<Component*> m_Components;
+		std::set<Object*> m_Children;
+		std::vector<Garbage> m_GarbageCollector;
+
 	};
 }
+
+#include "Object.inl"
