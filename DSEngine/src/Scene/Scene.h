@@ -10,7 +10,7 @@ namespace DS
 	{
 	public:
 		Scene() = delete;
-		virtual ~Scene() = delete;
+		virtual ~Scene();
 
 	protected:
 		virtual void onUpdate(float deltaTime) = 0;
