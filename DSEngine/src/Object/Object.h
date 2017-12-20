@@ -2,12 +2,12 @@
 #include <string>
 #include <vector>
 #include <set>
+#include "../Scene/Scene.h"
 
 namespace DS
 {
-	class Scene;
 	class Component;
-
+  
 	class Object
 	{
 	public:
@@ -73,6 +73,9 @@ namespace DS
 		std::set<Object*> m_Children;
 		std::vector<Garbage> m_GarbageCollector;
 
+		friend void Scene::update(float deltaTime);
+		friend void Scene::draw();
+		
 	};
 }
 
