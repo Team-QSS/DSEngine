@@ -130,5 +130,8 @@
     <None Include="src\Utils\Singleton.inl">
       <Filter>소스 파일\Utils</Filter>
     </None>
+    <None Include="src\Object\Object.inl">
+      <Filter>소스 파일\Object</Filter>
+    </None>
   </ItemGroup>
 </Project>
