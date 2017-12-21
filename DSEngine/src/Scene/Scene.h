@@ -10,7 +10,7 @@ namespace DS
 	class Scene
 	{
 	public:
-		Scene() = delete;
+		Scene();
 		virtual ~Scene();
 
 	protected:
