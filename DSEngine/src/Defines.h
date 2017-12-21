@@ -5,4 +5,5 @@
 
 #include "BaseGame.h"
 #include "DSEngine.h"
+#include "Scene\SceneManager.h"
 #endif

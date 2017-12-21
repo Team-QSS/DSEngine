@@ -25,6 +25,7 @@ namespace DS
 
 		//教臂畔 按眉 积己
 		Logger::createInstance();
+		SceneManager::createInstance();
 
 		m_Game = &game;
 
@@ -38,12 +39,18 @@ namespace DS
 		while (m_IsRunning)
 		{
 			m_Game->update();
+
+			SceneManager::getInstance().getCurrentScene().update(1.0f);
+
 			m_Game->draw();
+
+			SceneManager::getInstance().getCurrentScene().draw();
 		}
 	}
 
 	void DSEngine::goodBye()
 	{
 		Logger::destroyInstance();
+		SceneManager::destroyInstance();
 	}
 }
