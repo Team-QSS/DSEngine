@@ -18,10 +18,10 @@ namespace DS
 		bool isSceneExist(std::string name);
 
 		void setCurrentScene(std::string name);
-		Scene* getCurrentScene();
+		Scene& getCurrentScene();
 
 	private:
 		std::map<std::string, Scene*> m_Scenes;
-		Scene* m_CurrentScene;
+		Scene& m_CurrentScene;
 	};
 }

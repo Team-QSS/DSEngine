@@ -41,9 +41,9 @@ namespace DS
 
 	void SceneManager::setCurrentScene(std::string name) 
 	{
-		m_CurrentScene = getScene(name);
+		m_CurrentScene = *getScene(name);
 	}
-	Scene* SceneManager::getCurrentScene()
+	Scene& SceneManager::getCurrentScene()
 	{
 		return m_CurrentScene;
 	}
