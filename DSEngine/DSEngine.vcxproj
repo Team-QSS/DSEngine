@@ -123,6 +123,7 @@
     <ClCompile Include="src\Object\Object.cpp" />
     <ClCompile Include="src\Object\TObject.cpp" />
     <ClCompile Include="src\Scene\Scene.cpp" />
+    <ClCompile Include="src\Scene\SceneManager.cpp" />
     <ClCompile Include="src\Scene\TScene.cpp" />
     <ClCompile Include="src\Utils\Logger.cpp" />
     <ClCompile Include="src\Utils\Utils.cpp" />

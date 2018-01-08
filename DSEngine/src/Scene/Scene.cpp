@@ -17,7 +17,8 @@ namespace DS
 	{
 		auto iter = m_Objects.find(object);
 
-		if (iter != m_Objects.end()) {
+		if (iter != m_Objects.end())
+		{
 			return true;
 		}
 		else 
