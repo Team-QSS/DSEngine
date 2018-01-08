@@ -13,7 +13,7 @@ namespace DS
 
 	DSEngine::~DSEngine()
 	{
-
+		
 	}
 
 	void DSEngine::initialize(BaseGame& game)
@@ -35,7 +35,7 @@ namespace DS
 		//게임 객체 초기화
 		m_Game->initialize();
 
-		SceneManager::getInstance().addScene("TestScene", *(new TScene));
+		SceneManager::getInstance().addScene("TestScene", *(new TScene()));
 		SceneManager::getInstance().setCurrentScene("TestScene");
 
 	}
