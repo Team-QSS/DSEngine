@@ -75,7 +75,8 @@ namespace DS
 
 		friend void Scene::update(float deltaTime);
 		friend void Scene::draw();
-		
+
+		friend class Component;
 	};
 }
 
