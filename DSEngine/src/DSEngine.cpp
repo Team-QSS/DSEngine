@@ -1,4 +1,5 @@
 #include "DSEngine.h"
+#include "Scene\TScene.h"
 
 namespace DS
 {
@@ -12,7 +13,7 @@ namespace DS
 
 	DSEngine::~DSEngine()
 	{
-
+		
 	}
 
 	void DSEngine::initialize(BaseGame& game)
@@ -25,11 +26,17 @@ namespace DS
 
 		//½Ì±ÛÅÏ °´Ã¼ »ý¼º
 		Logger::createInstance();
+		SceneManager::createInstance();
 
 		m_Game = &game;
 
+		Logger::getInstance().initialize(false);
+
 		//°ÔÀÓ °´Ã¼ ÃÊ±âÈ­
 		m_Game->initialize();
+
+		SceneManager::getInstance().addScene("TestScene", *(new TScene()));
+		SceneManager::getInstance().setCurrentScene("TestScene");
 
 	}
 
@@ -38,12 +45,18 @@ namespace DS
 		while (m_IsRunning)
 		{
 			m_Game->update();
+
+			SceneManager::getInstance().getCurrentScene().update(1.0f);
+
 			m_Game->draw();
+
+			SceneManager::getInstance().getCurrentScene().draw();
 		}
 	}
 
 	void DSEngine::goodBye()
 	{
 		Logger::destroyInstance();
+		SceneManager::destroyInstance();
 	}
 }

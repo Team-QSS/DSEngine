@@ -5,17 +5,17 @@ namespace DS
 {
 	void Scene::addObject(Object& object)
 	{
-		m_Objects.insert(object);
+		m_Objects.insert(&object);
 	}
 
 	void Scene::removeObject(Object& object)
 	{
-		m_Objects.erase(object);
+		m_Objects.erase(&object);
 	}
 
 	bool Scene::isObjectExist(Object& object)
 	{
-		auto iter = m_Objects.find(object);
+		auto iter = m_Objects.find(&object);
 
 		if (iter != m_Objects.end())
 		{
@@ -34,11 +34,11 @@ namespace DS
 
 	void Scene::update(float deltaTime)
 	{
-		for (Object& o : m_Objects)
+		for (Object* o : m_Objects)
 		{
-			if (o.isActive()) 
+			if (o->isActive()) 
 			{
-				o.update(deltaTime);
+				o->update(deltaTime);
 			}
 		}
 		onUpdate(deltaTime); //게임 프로그래머가 update시 해야 할 동작을 적으면 실행됨
@@ -46,11 +46,11 @@ namespace DS
 	
 	void Scene::draw() 
 	{
-		for (Object& o : m_Objects) 
+		for (Object* o : m_Objects) 
 		{
-			if (o.isVisible()) 
+			if (o->isVisible) 
 			{
-				o.draw();
+				o->draw();
 			}
 		}
 		onDraw();		//게임 프로그래머가 draw시 해야 할 동작을 적으면 실행됨
