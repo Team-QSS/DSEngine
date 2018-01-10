@@ -15,7 +15,7 @@ namespace DS
 
 	Object::~Object()
 	{
-
+		//차일드와 컴포넌트 전체 삭제
 	}
 
 	Object::Garbage::Garbage(Object::GarbageType type, void* element) :

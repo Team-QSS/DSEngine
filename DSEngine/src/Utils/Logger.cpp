@@ -108,6 +108,7 @@ namespace DS
 	{
 		if (!(m_LogBuffer.beg == m_LogBuffer.cur) && m_UseFile)
 		{
+			//현재 시간 확인
 			std::chrono::system_clock::time_point curTimePoint = std::chrono::system_clock::now();
 			time_t curTimet = std::chrono::system_clock::to_time_t(curTimePoint);
 			tm* curTime = new tm();
@@ -116,13 +117,19 @@ namespace DS
 			try
 			{
 				char curTimeBuffer[60] = { 0 };
+				//현재 시간에 따라 파일이름 결정
 				strftime(curTimeBuffer, sizeof(curTimeBuffer), "Log%y-%m-%d-%H-%M-%S.txt", curTime);
 				std::ofstream logFileStream;
 				logFileStream.exceptions(std::ios::failbit | std::ios::eofbit | std::ios::badbit);
 				std::cout << "Log-" + std::string(curTimeBuffer) << std::endl << m_LogBuffer.str() << std::endl;
+
+				//파일 생성
 				logFileStream.open(std::string(curTimeBuffer));
 
+				//파일에 로그 작성
 				logFileStream << m_LogBuffer.str() << std::endl;
+
+				//로그 파일 닫기
 				m_LogBuffer.clear();
 				logFileStream.close();
 			}

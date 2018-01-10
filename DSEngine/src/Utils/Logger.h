@@ -25,7 +25,7 @@ namespace DS
 	class Logger final : public Singleton<Logger>
 	{
 	public:
-		Logger() = default;
+		Logger() {};
 		virtual ~Logger();
 
 		void initialize(bool useConsole, bool useFile = false);

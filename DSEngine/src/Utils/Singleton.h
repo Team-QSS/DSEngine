@@ -11,8 +11,8 @@ namespace DS
 		static void destroyInstance();
 
 	protected:
-		Singleton() = default;
-		virtual ~Singleton() = default;
+		Singleton() {};
+		virtual ~Singleton() {};
 
 	private:
 		static T* s_Instance;
