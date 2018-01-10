@@ -13,12 +13,11 @@ namespace DS
 		void draw();
 		void destroy();
 
+	protected:
 		virtual void onInitialize() = 0;
 		virtual void onUpdate() = 0;
 		virtual void onDraw() = 0;
 		virtual void onDestroy() = 0;
-
-	protected:
 
 	private:
 		BaseGame & operator=(const BaseGame&) = delete;
