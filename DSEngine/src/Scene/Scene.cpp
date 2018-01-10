@@ -48,7 +48,7 @@ namespace DS
 	{
 		for (Object* o : m_Objects) 
 		{
-			if (o->isVisible) 
+			if (o->isVisible()) 
 			{
 				o->draw();
 			}

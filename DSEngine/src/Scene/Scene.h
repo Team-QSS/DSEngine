@@ -10,8 +10,8 @@ namespace DS
 	class Scene
 	{
 	public:
-		Scene();
-		virtual ~Scene();
+		Scene() {}
+		virtual ~Scene() {}
 
 	protected:
 		virtual void onUpdate(float deltaTime) = 0;
@@ -25,12 +25,9 @@ namespace DS
 	private:
 		void update(float deltaTime);
 		void draw();
-
 		std::unordered_set<Object*> m_Objects; //현재 오브젝트들을 담는 컨테이너
 
-		friend DSEngine;
-		std::unordered_set<Object&> m_Objects; //현재 오브젝트들을 담는 컨테이너
-	
+		friend DSEngine;	
 		friend class Object;
 	};
 }
