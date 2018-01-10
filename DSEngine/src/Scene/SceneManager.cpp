@@ -29,7 +29,7 @@ namespace DS
 	{
 		auto iter = m_Scenes.find(name);
 
-		if (iter != m_Scenes.end)
+		if (iter != m_Scenes.end())
 		{
 			return true;
 		}
