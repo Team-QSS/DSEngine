@@ -8,8 +8,8 @@ namespace DS
 	class SceneManager final : public Singleton<SceneManager>
 	{
 	public:
-		SceneManager() = default;
-		~SceneManager() = default;
+		SceneManager();
+		~SceneManager();
 		
 		void addScene(std::string name, Scene& scene);
 		void removeScene(std::string name);
@@ -22,6 +22,6 @@ namespace DS
 
 	private:
 		std::map<std::string, Scene*> m_Scenes;
-		Scene& m_CurrentScene;
+		Scene* m_CurrentScene;
 	};
 }

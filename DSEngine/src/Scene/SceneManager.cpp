@@ -3,6 +3,15 @@
 
 namespace DS
 {
+	SceneManager::SceneManager()
+	{
+
+	}
+
+	SceneManager::~SceneManager()
+	{
+
+	}
 	void SceneManager::addScene(std::string name, Scene& scene)
 	{
 		m_Scenes.insert(make_pair(name, &scene));
@@ -29,7 +38,7 @@ namespace DS
 	{
 		auto iter = m_Scenes.find(name);
 
-		if (iter != m_Scenes.end)
+		if (iter != m_Scenes.end())
 		{
 			return true;
 		}
@@ -41,10 +50,11 @@ namespace DS
 
 	void SceneManager::setCurrentScene(std::string name) 
 	{
-		m_CurrentScene = *getScene(name);
+		m_CurrentScene = getScene(name);
 	}
+	
 	Scene& SceneManager::getCurrentScene()
 	{
-		return m_CurrentScene;
+		return *m_CurrentScene;
 	}
 }

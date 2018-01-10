@@ -155,11 +155,11 @@ namespace DS
 	{
 		for (Garbage garbage : m_GarbageCollector)
 		{
+			Component* component = reinterpret_cast<Component *>(garbage.element);
+			Object* object = reinterpret_cast<Object *>(garbage.element);
 			switch (garbage.type)
 			{
 			case GarbageType::ComponentType:
-				Component* component = reinterpret_cast<Component *>(garbage.element);
-
 				if (m_Components.count(component) < 1)
 				{
 					LOG(LogLevel::Error, "컴포넌트제거 오류");
@@ -169,9 +169,6 @@ namespace DS
 				m_Components.erase(component);
 				break;
 			case GarbageType::ObjectType:
-
-				Object* object = reinterpret_cast<Object *>(garbage.element);
-
 				if (m_Children.count(object) < 1)
 				{
 					LOG(LogLevel::Error, "차일드 제거 오류");
