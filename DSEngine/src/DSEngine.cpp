@@ -56,6 +56,7 @@ namespace DS
 
 	void DSEngine::goodBye()
 	{
+		m_IsRunning = false;
 		Logger::destroyInstance();
 		SceneManager::destroyInstance();
 	}
