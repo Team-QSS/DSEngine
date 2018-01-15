@@ -4,6 +4,24 @@
 
 namespace DS
 {
+	Scene::Scene()
+	{
+		//Scene이 생성될 때 실행되어야 할 동작을 기술
+	}
+
+	Scene::~Scene()
+	{
+		//Scene이 소멸될 때 실행되어야 할 동작을 기술
+		//엔진 차원에서 소멸될 때 Obejct 컨테이너를 비우도록 함
+
+		for (Object* o : m_Objects)
+		{
+			delete o;
+		}
+		m_Objects.clear();
+		m_GarbageCollector.clear();
+	}
+
 	void Scene::addObject(Object& object)
 	{
 		if (!isObjectExist(object))
@@ -20,7 +38,7 @@ namespace DS
 	{
 		if (isObjectExist(object))
 		{
-			m_Objects.erase(&object);
+			m_GarbageCollector.push_back(&object);
 		}
 		else
 		{
@@ -49,6 +67,8 @@ namespace DS
 
 	void Scene::update(float deltaTime)
 	{
+		collectGarbage();
+
 		for (Object* o : m_Objects)
 		{
 			if (o->isActive()) 
@@ -69,5 +89,19 @@ namespace DS
 			}
 		}
 		onDraw();		//게임 프로그래머가 draw시 해야 할 동작을 적으면 실행됨
+	}
+
+	void Scene::collectGarbage()
+	{
+		for (Object* object : m_GarbageCollector)
+		{
+			if (!isObjectExist(*object))
+			{
+				LOG(LogLevel::Error, "오브젝트 제거 오류");
+				break;
+			}
+			m_Objects.erase(object);
+		}
+		m_GarbageCollector.clear();
 	}
 }
