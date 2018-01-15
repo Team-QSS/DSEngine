@@ -1,16 +1,31 @@
 #include "Scene.h"
 #include "../Object/Object.h"
+#include "../Utils/Logger.h"
 
 namespace DS
 {
 	void Scene::addObject(Object& object)
 	{
-		m_Objects.insert(&object);
+		if (!isObjectExist(object))
+		{
+			m_Objects.insert(&object);
+		}
+		else
+		{
+			LOG(LogLevel::Warning, "이미 존재하는 Object를 추가 시도");
+		}
 	}
 
 	void Scene::removeObject(Object& object)
 	{
-		m_Objects.erase(&object);
+		if (isObjectExist(object))
+		{
+			m_Objects.erase(&object);
+		}
+		else
+		{
+			LOG(LogLevel::Warning, "존재하지 않는 Object를 삭제 시도");
+		}		
 	}
 
 	bool Scene::isObjectExist(Object& object)

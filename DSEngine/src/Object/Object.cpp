@@ -1,7 +1,6 @@
 #include "Object.h"
 #include "../Component/Component.h"
 
-
 namespace DS
 {
 	Object::Object():
