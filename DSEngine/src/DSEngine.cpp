@@ -16,7 +16,12 @@ namespace DS
 		
 	}
 
-	void DSEngine::initialize(BaseGame& game)
+	void DSEngine::initialize(BaseGame& game, Scene& initialScene, const std::string &sceneName)
+	{
+		initialize(game, initialScene, std::move(sceneName));
+	}
+
+	void DSEngine::initialize(BaseGame& game, Scene& initialScene, const std::string &&sceneName)
 	{
 		if (m_IsInitialized) //중복 초기화 검사
 		{
@@ -35,8 +40,8 @@ namespace DS
 		//게임 객체 초기화
 		m_Game->initialize();
 
-		SceneManager::getInstance().addScene("TestScene", *(new TScene()));
-		SceneManager::getInstance().setCurrentScene("TestScene");
+		SceneManager::getInstance().addScene(sceneName, initialScene);
+		SceneManager::getInstance().setCurrentScene(sceneName);
 
 	}
 

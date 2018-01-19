@@ -1,6 +1,7 @@
 #pragma once
 #include "Utils\Utils.h"
-#include"Defines.h"
+#include "Defines.h"
+#include "Scene\Scene.h"
 
 namespace DS
 {
@@ -10,7 +11,8 @@ namespace DS
 		DSEngine();
 		~DSEngine();
 
-		void initialize(BaseGame& game);
+		void initialize(BaseGame& game, Scene& initialScene, const std::string& sceneName);
+		void initialize(BaseGame& game, Scene& initialScene, const std::string&& sceneName);
 
 		void run();
 

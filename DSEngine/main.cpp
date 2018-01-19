@@ -1,6 +1,7 @@
 #include <iostream>
 #define LOG_MIN_LEVEL 1
 #include "src\Defines.h"
+#include "src\Scene\TScene.h"
 
 using namespace std;
 
@@ -29,7 +30,7 @@ int main()
 	DS::DSEngine::createInstance();
 
 	auto engine = DS::DSEngine::getInstance();
-	engine.initialize(*(new TestGame()));
+	engine.initialize(*(new TestGame()), (*(new DS::TScene())), "TestScene");
 	engine.run();
 
 	return 0;

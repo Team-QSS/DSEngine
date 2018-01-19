@@ -1,6 +1,10 @@
 #include "Object.h"
 #include "../Component/Component.h"
+#include <utility>
+#include <map>
+#include <iterator>
 
+using namespace std;
 
 namespace DS
 {
@@ -48,9 +52,9 @@ namespace DS
 
 		onUpdate(deltaTime);
 
-		for (Component* component : m_Components)
+		for (auto iter = m_Components.begin(); iter != m_Components.end(); iter++)
 		{
-			component->update(deltaTime);
+			iter->second->update(deltaTime);
 		}
 
 		for (Object* child : m_Children)
@@ -65,9 +69,9 @@ namespace DS
 
 		onDraw();
 
-		for (Component* component : m_Components)
+		for (auto iter = m_Components.begin(); iter != m_Components.end(); iter++)
 		{
-			component->draw();
+			iter->second->draw();
 		}
 
 		for (Object* child : m_Children)
@@ -78,18 +82,18 @@ namespace DS
 
 	void Object::addComponent(Component& component)
 	{
-		if (m_Components.count(&component) > 0)
+		if (m_Components.count(typeid(component).name()) > 0)
 		{
 			LOG(LogLevel::Warning, "있는 컴포넌트를 다시 추가하려고 시도함");
 			return;
 		}
 
-		m_Components.insert(&component);
+		m_Components.insert(make_pair(typeid(component).name(), &component));
 	}
 
 	void Object::removeComponent(Component& component)
 	{
-		if (m_Components.count(&component) < 1)
+		if (m_Components.count(typeid(component).name()) < 1)
 		{
 			LOG(LogLevel::Warning, "없는 컴포넌트를 삭제하려고 시도함");
 			return;
@@ -160,25 +164,29 @@ namespace DS
 			switch (garbage.type)
 			{
 			case GarbageType::ComponentType:
-				if (m_Components.count(component) < 1)
+				if (m_Components.count(typeid(component).name()) < 1)
 				{
 					LOG(LogLevel::Error, "컴포넌트제거 오류");
 					break;
 				}
 
-				m_Components.erase(component);
+				m_Components.erase(typeid(component).name());
+				delete component;
 				break;
 			case GarbageType::ObjectType:
-				if (m_Children.count(object) < 1)
+				if (isChildExist(*object))
 				{
 					LOG(LogLevel::Error, "차일드 제거 오류");
 					break;
 				}
 
 				m_Children.erase(object);
+				delete object;
 				break;
 			}
 		}
+
+		m_GarbageCollector.clear();
 	}
 
 }
