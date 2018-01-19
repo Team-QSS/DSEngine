@@ -1,35 +1,43 @@
 #include "SceneManager.h"
 #include <utility>
+#include "../Utils/Logger.h"
 
 namespace DS
 {
-	SceneManager::SceneManager()
-	{
-
-	}
-
-	SceneManager::~SceneManager()
-	{
-
-	}
 	void SceneManager::addScene(std::string name, Scene& scene)
 	{
-		m_Scenes.insert(make_pair(name, &scene));
+		if (!isSceneExist(name))
+		{
+			m_Scenes.insert(make_pair(name, &scene));
+		}
+		else
+		{
+			LOG(LogLevel::Warning, "이미 존재하는 Scene을 추가 시도");
+		}		
 	}
 
 	void SceneManager::removeScene(std::string name)
 	{
-		m_Scenes.erase(name);
-	}
-
-	Scene* SceneManager::getScene(std::string name)
-	{
 		if (isSceneExist(name))
 		{
-			return m_Scenes[name];		//name에 해당되는 Scene이 있으면 객체를
+			m_Scenes.erase(name);
 		}
 		else
 		{
+			LOG(LogLevel::Warning, "존재하지 않는 Scene을 삭제 시도");
+		}
+		
+	}
+
+	Scene& SceneManager::getScene(std::string name)
+	{
+		if (isSceneExist(name))
+		{
+			return *m_Scenes[name];		//name에 해당되는 Scene이 있으면 객체를
+		}
+		else
+		{
+			LOG(LogLevel::Warning, "존재하지 않는 Scene을 Get 하려고 함");
 			nullptr;					//없으면 null을 리턴한다
 		}
 	}
@@ -50,7 +58,7 @@ namespace DS
 
 	void SceneManager::setCurrentScene(std::string name) 
 	{
-		m_CurrentScene = getScene(name);
+		m_CurrentScene = &getScene(name);
 	}
 	
 	Scene& SceneManager::getCurrentScene()
