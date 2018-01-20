@@ -15,6 +15,11 @@ namespace DS
 
 	}
 
+	void Window::initialize(HINSTANCE instanceHandle, int x_Size, int y_Size)
+	{
+		initialize(instanceHandle, DirectX::XMINT2(x_Size, y_Size));
+	}
+
 	void Window::initialize(HINSTANCE instanceHandle, DirectX::XMINT2 size)
 	{
 		if (m_IsInitialized)
@@ -65,6 +70,11 @@ namespace DS
 				m_ShouldClose = true;
 			}
 		}
+	}
+
+	const HWND& Window::getHandle() const
+	{
+		return m_WindowHandle;
 	}
 
 	bool Window::shouldClose() const

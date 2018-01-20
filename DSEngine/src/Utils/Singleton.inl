@@ -24,7 +24,7 @@ namespace DS
 	{
 		if (s_Instance == nullptr)
 		{
-			LOG(LogLevel::Error, "미초기화 상태의 싱글턴 객체 접근 시도")
+			LOG(LogLevel::Error, "미초기화 상태의 싱글턴 객체 접근 시도. createInstance() 함수를 먼저 호출하시오")
 		}
 
 		return *s_Instance;
@@ -35,7 +35,7 @@ namespace DS
 	{
 		if (s_Instance == nullptr)
 		{
-			LOG(LogLevel::Warning, "미초기화 상태의 싱글턴 객체 할당 해제 시도")
+			LOG(LogLevel::Warning, "미초기화 상태의 싱글턴 객체 할당 해제 시도. createInstance() 함수를 먼저 호출하시오")
 		}
 		else
 		{

@@ -11,7 +11,10 @@ namespace DS
 		Window();
 		~Window();
 
+		void initialize(HINSTANCE instanceHandle, int x_Size, int y_Size);
 		void initialize(HINSTANCE instanceHandle, DirectX::XMINT2 size);
+
+		const HWND& getHandle() const;
 
 		void peekMessage();
 
@@ -22,6 +25,7 @@ namespace DS
 		HWND m_WindowHandle;
 
 		bool m_IsInitialized;
+		bool m_IsFullScreen;
 		bool m_ShouldClose;
 	};
 }
