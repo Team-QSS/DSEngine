@@ -1,4 +1,5 @@
 #include "Window.h"
+#include "../Utils/Logger.h"
 
 namespace DS
 {
@@ -85,5 +86,23 @@ namespace DS
 	bool Window::changeWindowTitle(const char* title)
 	{
 		return SetWindowText(m_WindowHandle, title) != 0;
+	}
+
+	LRESULT CALLBACK Window::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+	{
+		switch (msg)
+		{
+			case WM_DESTROY:
+				PostQuitMessage(0);
+				return 0;
+			case WM_KEYDOWN:
+				if (wParam == VK_ESCAPE)
+				{
+					DestroyWindow(hWnd);
+				}
+				return 0;
+			default:
+				return DefWindowProc(hWnd, msg, wParam, lParam);
+		}
 	}
 }

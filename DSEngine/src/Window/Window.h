@@ -21,6 +21,8 @@ namespace DS
 		bool shouldClose() const;
 		bool changeWindowTitle(const char* title);
 
+		static LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 	private:
 		HWND m_WindowHandle;
 
