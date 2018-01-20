@@ -4,9 +4,12 @@
 namespace DS
 {
 	Window::Window() :
-		m_IsInitialized(false),
 		m_WindowHandle(nullptr),
-		m_ShouldClose(false)
+		m_IsInitialized(false),
+		m_ShouldClose(false),
+		m_IsActive(false)
+//		m_IsFullScreen(false),
+//		m_CanGoFullScreen(false)
 	{
 
 	}
@@ -88,6 +91,16 @@ namespace DS
 		return SetWindowText(m_WindowHandle, title) != 0;
 	}
 
+	bool Window::isActive() const
+	{
+		return m_IsActive;
+	}
+
+	void Window::setActive(bool active)
+	{
+		m_IsActive = active;
+	}
+
 	LRESULT CALLBACK Window::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	{
 		switch (msg)
@@ -95,12 +108,25 @@ namespace DS
 			case WM_DESTROY:
 				PostQuitMessage(0);
 				return 0;
+			case WM_ENTERSIZEMOVE:
+			case WM_NCRBUTTONDOWN:
+				Window::getInstance().setActive(false);
+				break;
+			case WM_EXITSIZEMOVE:
+			case WM_EXITMENULOOP:
+				Window::getInstance().setActive(true);
+				break;
 			case WM_KEYDOWN:
-				if (wParam == VK_ESCAPE)
-				{
-					DestroyWindow(hWnd);
-				}
-				return 0;
+				//Input 구현 후 상호작용
+			case WM_KEYUP:
+				//Input 구현 후 상호작용
+			case WM_KEYLAST:
+				//Input 구현 후 상호작용
+			case WM_SYSCOMMAND:
+				//SC_KEYMENU == (wParam & 0xFFF0)
+
+				//alt+enter 전체화면
+				//Input 구현 후 상호작용
 			default:
 				return DefWindowProc(hWnd, msg, wParam, lParam);
 		}

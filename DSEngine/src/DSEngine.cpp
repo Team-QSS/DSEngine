@@ -49,6 +49,8 @@ namespace DS
 	{
 		while (m_IsRunning)
 		{
+			Window::getInstance().peekMessage();
+
 			m_Game->update();
 
 			SceneManager::getInstance().getCurrentScene().update(1.0f);

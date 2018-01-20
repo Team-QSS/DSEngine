@@ -21,13 +21,23 @@ namespace DS
 		bool shouldClose() const;
 		bool changeWindowTitle(const char* title);
 
+		bool isActive() const;
+		void setActive(bool active);
+
+//		bool isFullScreen() const;
+//		bool canGoFullScreen() const;
+//		void setFullScreen(HWND hWnd, bool fullscreen);
+//		void toggleFullScreen(HWND hWnd);
+
 		static LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 	private:
 		HWND m_WindowHandle;
 
 		bool m_IsInitialized;
-		bool m_IsFullScreen;
 		bool m_ShouldClose;
+		bool m_IsActive;
+//		bool m_IsFullScreen;
+//		bool m_CanGoFullScreen;
 	};
 }

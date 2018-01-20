@@ -2,6 +2,7 @@
 #include "Utils\Utils.h"
 #include "Defines.h"
 #include "Scene\Scene.h"
+#include "Window\Window.h"
 
 namespace DS
 {
