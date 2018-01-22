@@ -19,7 +19,6 @@ namespace DS
 		void peekMessage();
 
 		bool shouldClose() const;
-		bool changeWindowTitle(const char* title);
 
 		bool isActive() const;
 		void setActive(bool active);
@@ -28,6 +27,9 @@ namespace DS
 //		bool canGoFullScreen() const;
 //		void setFullScreen(HWND hWnd, bool fullscreen);
 //		void toggleFullScreen(HWND hWnd);
+
+		bool setWindowName(const char* windowName) const;	//윈도우 이름 바꾸기
+		bool setWindowName(std::string windowName) const;	//윈도우 이름 바꾸기
 
 		static LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 

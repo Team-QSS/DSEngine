@@ -11,7 +11,7 @@ namespace DS
 //		m_IsFullScreen(false),
 //		m_CanGoFullScreen(false)
 	{
-
+		
 	}
 
 	Window::~Window()
@@ -86,11 +86,6 @@ namespace DS
 		return m_ShouldClose;
 	}
 
-	bool Window::changeWindowTitle(const char* title)
-	{
-		return SetWindowText(m_WindowHandle, title) != 0;
-	}
-
 	bool Window::isActive() const
 	{
 		return m_IsActive;
@@ -99,6 +94,16 @@ namespace DS
 	void Window::setActive(bool active)
 	{
 		m_IsActive = active;
+	}
+
+	bool Window::setWindowName(const char* windowName) const
+	{
+		return SetWindowText(m_WindowHandle, windowName) != false;
+	}
+
+	bool Window::setWindowName(std::string windowName) const
+	{
+		return SetWindowText(m_WindowHandle, windowName.c_str()) != false;
 	}
 
 	LRESULT CALLBACK Window::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
