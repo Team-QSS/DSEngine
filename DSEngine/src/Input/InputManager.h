@@ -13,13 +13,12 @@ namespace DS
 		Right
 	};
 
-	class InputManager final : Singleton<InputManager>
+	class InputManager final : public Singleton<InputManager>
 	{
 	public:
 		InputManager();
 		~InputManager();
 
-		void initialize();
 		void update();
 
 		//눌려있다면 true, 그외엔 false

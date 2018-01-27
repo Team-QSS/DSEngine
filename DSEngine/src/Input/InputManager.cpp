@@ -24,11 +24,6 @@ namespace DS
 		}
 	}
 
-	void InputManager::initialize()
-	{
-
-	}
-
 	void InputManager::update()
 	{
 		updateKeyState();
