@@ -1,9 +1,18 @@
 #pragma once
 #include "../Utils/Utils.h"
 #include <Windows.h>
+#include <DirectXMath.h>
 
 namespace DS
 {
+	class Window;
+
+	enum class MouseButton
+	{
+		Left,
+		Right
+	};
+
 	class InputManager final : Singleton<InputManager>
 	{
 	public:
@@ -11,10 +20,41 @@ namespace DS
 		~InputManager();
 
 		void initialize();
-		
-	private:
-		bool m_CurKeyboardState[256];
+		void update();
 
-		LRESULT CALLBACK WndProc(HINSTANCE instanceHandle, UINT message, WPARAM wParam, LPARAM lParam);
+		//눌려있다면 true, 그외엔 false
+		bool isKeyDown(char key) const;
+		//해당 키를 누른 첫 프레임에만 true, 그외엔 false
+		bool isKeyPressed(char key) const;
+		//해당 키를 뗀 첫 프레임에만 true, 그외엔 false
+		bool isKeyReleased(char key) const;
+
+		//눌려있다면 true, 그외엔 false
+		bool isButtonDown(MouseButton button) const;
+		//해당 버튼을 누른 첫 프레임에만 true, 그외엔 false
+		bool isButtonPressed(MouseButton button) const;
+		//해당 버튼을 뗀 첫 프레임에만 true, 그외엔 false
+		bool isButtonReleased(MouseButton button) const;
+
+		//마우스 커서 위치
+		DirectX::XMINT2 getCursorPos() const;
+	private:
+		static const int KEY_COUNT = 256;
+		static const int KEY_ID_MIN = 0x07;
+		static const int KEY_ID_MAX = 0xfe;
+
+	private:
+		void updateKeyState();
+		void updateMouseState();
+
+		void setMouseState(MouseButton button, bool isDown);
+
+		BYTE* m_CurKeyState;
+		BYTE* m_PreKeyState;
+
+		bool m_CurMouseState[2];
+		bool m_PreMouseState[2];
+
+		friend class Window;
 	};
 }
