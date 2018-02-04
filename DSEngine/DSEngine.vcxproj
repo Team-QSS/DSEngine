@@ -121,10 +121,8 @@
     <ClCompile Include="src\DSEngine.cpp" />
     <ClCompile Include="src\Input\InputManager.cpp" />
     <ClCompile Include="src\Object\Object.cpp" />
-    <ClCompile Include="src\Object\TObject.cpp" />
     <ClCompile Include="src\Scene\Scene.cpp" />
     <ClCompile Include="src\Scene\SceneManager.cpp" />
-    <ClCompile Include="src\Scene\TScene.cpp" />
     <ClCompile Include="src\Utils\Logger.cpp" />
     <ClCompile Include="src\Utils\Utils.cpp" />
     <ClCompile Include="src\Window\Window.cpp" />
@@ -136,10 +134,8 @@
     <ClInclude Include="src\DSEngine.h" />
     <ClInclude Include="src\Input\InputManager.h" />
     <ClInclude Include="src\Object\Object.h" />
-    <ClInclude Include="src\Object\TObject.h" />
     <ClInclude Include="src\Scene\Scene.h" />
     <ClInclude Include="src\Scene\SceneManager.h" />
-    <ClInclude Include="src\Scene\TScene.h" />
     <ClInclude Include="src\Utils\Logger.h" />
     <ClInclude Include="src\Utils\Singleton.h" />
     <ClInclude Include="src\Utils\Utils.h" />

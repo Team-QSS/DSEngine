@@ -1,5 +1,4 @@
 #include "DSEngine.h"
-#include "Scene\TScene.h"
 
 namespace DS
 {
@@ -16,12 +15,7 @@ namespace DS
 		
 	}
 
-	void DSEngine::initialize(BaseGame& game, Scene& initialScene, const std::string &sceneName)
-	{
-		initialize(game, initialScene, std::move(sceneName));
-	}
-
-	void DSEngine::initialize(BaseGame& game, Scene& initialScene, const std::string &&sceneName)
+	void DSEngine::initialize(BaseGame& game, HINSTANCE instanceHandle, DirectX::XMINT2 windowSize, Scene& initialScene, std::string sceneName)
 	{
 		if (m_IsInitialized) //중복 초기화 검사
 		{
@@ -32,10 +26,13 @@ namespace DS
 		//싱글턴 객체 생성
 		Logger::createInstance();
 		SceneManager::createInstance();
+		Window::createInstance();
+		InputManager::createInstance();
 
 		m_Game = &game;
 
 		Logger::getInstance().initialize(false);
+		Window::getInstance().initialize(instanceHandle, windowSize);
 
 		//게임 객체 초기화
 		m_Game->initialize();
@@ -49,6 +46,8 @@ namespace DS
 	{
 		while (m_IsRunning)
 		{
+			InputManager::getInstance().update();
+
 			Window::getInstance().peekMessage();
 
 			m_Game->update();
@@ -64,6 +63,8 @@ namespace DS
 	void DSEngine::goodBye()
 	{
 		m_IsRunning = false;
+		InputManager::destroyInstance();
+		Window::destroyInstance();
 		Logger::destroyInstance();
 		SceneManager::destroyInstance();
 	}

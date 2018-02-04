@@ -3,6 +3,7 @@
 #include "Defines.h"
 #include "Scene\Scene.h"
 #include "Window\Window.h"
+#include "Input\InputManager.h"
 
 namespace DS
 {
@@ -12,8 +13,7 @@ namespace DS
 		DSEngine();
 		~DSEngine();
 
-		void initialize(BaseGame& game, Scene& initialScene, const std::string& sceneName);
-		void initialize(BaseGame& game, Scene& initialScene, const std::string&& sceneName);
+		void initialize(BaseGame& game, HINSTANCE instanceHandle, DirectX::XMINT2 windowSize, Scene& initialScene, std::string sceneName);
 
 		void run();
 
