@@ -31,7 +31,7 @@ namespace DS
 
 		m_Game = &game;
 
-		Logger::getInstance().initialize(false);
+		Logger::getInstance().initialize(false, true);
 		Window::getInstance().initialize(instanceHandle, windowSize);
 
 		//게임 객체 초기화
@@ -40,6 +40,7 @@ namespace DS
 		SceneManager::getInstance().addScene(sceneName, initialScene);
 		SceneManager::getInstance().setCurrentScene(sceneName);
 
+		m_IsRunning = true;
 	}
 
 	void DSEngine::run()

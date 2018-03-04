@@ -38,7 +38,7 @@ namespace DS
 		wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 		wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 		wc.hInstance = instanceHandle;
-		wc.lpfnWndProc = NULL;
+		wc.lpfnWndProc = Window::WndProc;
 		wc.lpszClassName = "DSEngine";
 		wc.lpszMenuName = "a";
 		wc.style = CS_HREDRAW | CS_VREDRAW;
@@ -49,7 +49,7 @@ namespace DS
 			terminate(0);
 		}
 
-		m_WindowHandle = CreateWindow("DSEngine", "a", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, size.x, size.y, 0, 0, instanceHandle, 0);
+		m_WindowHandle = CreateWindow("DSEngine", "Window", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, size.x, size.y, 0, 0, instanceHandle, 0);
 
 		if (!m_WindowHandle)
 		{
@@ -135,5 +135,6 @@ namespace DS
 			default:
 				return DefWindowProc(hWnd, msg, wParam, lParam);
 		}
+		return DefWindowProc(hWnd, msg, wParam, lParam);
 	}
 }
