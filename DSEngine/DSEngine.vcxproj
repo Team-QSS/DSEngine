@@ -118,6 +118,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\BaseGame.cpp" />
     <ClCompile Include="src\Component\Component.cpp" />
+    <ClCompile Include="src\Component\TransformComponent.cpp" />
     <ClCompile Include="src\DSEngine.cpp" />
     <ClCompile Include="src\Input\InputManager.cpp" />
     <ClCompile Include="src\Object\Object.cpp" />
@@ -130,6 +131,7 @@
   <ItemGroup>
     <ClInclude Include="src\BaseGame.h" />
     <ClInclude Include="src\Component\Component.h" />
+    <ClInclude Include="src\Component\TransformComponent.h" />
     <ClInclude Include="src\Defines.h" />
     <ClInclude Include="src\DSEngine.h" />
     <ClInclude Include="src\Input\InputManager.h" />

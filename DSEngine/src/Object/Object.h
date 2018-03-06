@@ -8,6 +8,7 @@
 namespace DS
 {
 	class Component;
+	class TransformComponent;
   
 	class Object
 	{
@@ -32,6 +33,7 @@ namespace DS
 		T& getComponent() const;
 		template <typename T>
 		bool isComponentExist();
+		TransformComponent& getTransformComponent();
 
 		void addChild(Object& object);
 		void removeChild(Object& object);

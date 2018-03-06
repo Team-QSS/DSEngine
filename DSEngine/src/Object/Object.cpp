@@ -1,5 +1,6 @@
 #include "Object.h"
 #include "../Component/Component.h"
+#include "../Component/TransformComponent.h"
 #include <utility>
 #include <map>
 #include <iterator>
@@ -19,7 +20,18 @@ namespace DS
 
 	Object::~Object()
 	{
-		//차일드와 컴포넌트 전체 삭제
+		for (Object* o : m_Children)
+		{
+			delete o;
+		}
+		m_Children.clear();
+
+		for(auto it = m_Components.begin; it != m_Components.end(); it++)
+		{
+			delete it[2];
+		}
+		m_Components.clear();
+
 	}
 
 	Object::Garbage::Garbage(Object::GarbageType type, void* element) :
@@ -100,6 +112,11 @@ namespace DS
 		}
 
 		m_GarbageCollector.push_back(Garbage(GarbageType::ComponentType, static_cast<void*>(&component)));
+	}
+
+	TransformComponent& getTransformComponent()
+	{
+		return getComponent<TransformComponent>();
 	}
 
 	void Object::addChild(Object& object)

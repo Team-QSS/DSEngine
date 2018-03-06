@@ -84,6 +84,9 @@
     <ClCompile Include="src\Scene\SceneManager.cpp">
       <Filter>소스 파일\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="src\Component\TransformComponent.cpp">
+      <Filter>소스 파일\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Utils\Logger.h">
@@ -120,6 +123,9 @@
       <Filter>헤더 파일\Object</Filter>
     </ClInclude>
     <ClInclude Include="src\Component\Component.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Component\TransformComponent.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
   </ItemGroup>
