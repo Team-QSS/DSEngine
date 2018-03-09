@@ -12,9 +12,9 @@ namespace DS
 	}
 
 	template <typename T>
-	T& Object::getComponent() const
+	T* Object::getComponent()
 	{
-		if (Object::isComponentExist<T>()) return *m_Components[typeid(T).name];
+		if (Object::isComponentExist<T>()) return dynamic_cast<T*>(m_Components.at(typeid(T).name()));
 		else LOG(LogLevel::Error, "없는 컴포넌트를 검색 시도함");
 
 		return nullptr;
@@ -23,8 +23,8 @@ namespace DS
 	template <typename T>
 	bool Object::isComponentExist()
 	{
-		if (m_Components.count(typeid(T).name) > 0) return true;
-		else return false
+		if (m_Components.count(typeid(T).name()) > 0) return true;
+		else return false;
 	}
 
 }

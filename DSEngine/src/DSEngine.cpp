@@ -28,11 +28,13 @@ namespace DS
 		SceneManager::createInstance();
 		Window::createInstance();
 		InputManager::createInstance();
+		GraphicsManager::createInstance();
 
 		m_Game = &game;
 
 		Logger::getInstance().initialize(false, true);
 		Window::getInstance().initialize(instanceHandle, windowSize);
+		GraphicsManager::getInstance().initialize(Window::getInstance().getHandle(), windowSize, false);
 
 		//게임 객체 초기화
 		m_Game->initialize();
@@ -57,6 +59,8 @@ namespace DS
 
 			m_Game->draw();
 
+			GraphicsManager::getInstance().draw();
+
 			SceneManager::getInstance().getCurrentScene().draw();
 		}
 	}
@@ -64,6 +68,7 @@ namespace DS
 	void DSEngine::goodBye()
 	{
 		m_IsRunning = false;
+		GraphicsManager::destroyInstance();
 		InputManager::destroyInstance();
 		Window::destroyInstance();
 		Logger::destroyInstance();

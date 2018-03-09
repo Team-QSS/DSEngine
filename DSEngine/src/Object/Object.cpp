@@ -15,7 +15,7 @@ namespace DS
 		m_Scene(nullptr),
 		m_Parent(nullptr)
 	{
-
+		addComponent((*(new TransformComponent())));
 	}
 
 	Object::~Object()
@@ -25,10 +25,10 @@ namespace DS
 			delete o;
 		}
 		m_Children.clear();
-
-		for(auto it = m_Components.begin; it != m_Components.end(); it++)
+		auto it = m_Components.begin();
+		for(; it != m_Components.end(); it++)
 		{
-			delete it[2];
+			delete it->second;
 		}
 		m_Components.clear();
 
@@ -114,9 +114,9 @@ namespace DS
 		m_GarbageCollector.push_back(Garbage(GarbageType::ComponentType, static_cast<void*>(&component)));
 	}
 
-	TransformComponent& getTransformComponent()
+	TransformComponent& Object::getTransformComponent()
 	{
-		return getComponent<TransformComponent>();
+		return *(getComponent<TransformComponent>());
 	}
 
 	void Object::addChild(Object& object)

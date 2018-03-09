@@ -49,6 +49,12 @@
     <Filter Include="소스 파일\Component">
       <UniqueIdentifier>{1751331c-9899-420c-ba9d-46f6f08b7eab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Graphics">
+      <UniqueIdentifier>{78fed72b-ffad-46ed-90a2-c8e7730e0f02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Graphics">
+      <UniqueIdentifier>{9f853860-5d21-4bd0-abe6-f30d12d41847}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -86,6 +92,9 @@
     </ClCompile>
     <ClCompile Include="src\Component\TransformComponent.cpp">
       <Filter>소스 파일\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\GraphicsManager.cpp">
+      <Filter>소스 파일\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="src\Component\TransformComponent.h">
       <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\GraphicsManager.h">
+      <Filter>헤더 파일\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

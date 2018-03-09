@@ -120,6 +120,7 @@
     <ClCompile Include="src\Component\Component.cpp" />
     <ClCompile Include="src\Component\TransformComponent.cpp" />
     <ClCompile Include="src\DSEngine.cpp" />
+    <ClCompile Include="src\Graphics\GraphicsManager.cpp" />
     <ClCompile Include="src\Input\InputManager.cpp" />
     <ClCompile Include="src\Object\Object.cpp" />
     <ClCompile Include="src\Scene\Scene.cpp" />
@@ -134,6 +135,7 @@
     <ClInclude Include="src\Component\TransformComponent.h" />
     <ClInclude Include="src\Defines.h" />
     <ClInclude Include="src\DSEngine.h" />
+    <ClInclude Include="src\Graphics\GraphicsManager.h" />
     <ClInclude Include="src\Input\InputManager.h" />
     <ClInclude Include="src\Object\Object.h" />
     <ClInclude Include="src\Scene\Scene.h" />

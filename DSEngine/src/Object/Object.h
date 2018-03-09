@@ -30,7 +30,7 @@ namespace DS
 		template<typename T>
 		void removeComponent();
 		template <typename T>
-		T& getComponent() const;
+		T* getComponent();
 		template <typename T>
 		bool isComponentExist();
 		TransformComponent& getTransformComponent();

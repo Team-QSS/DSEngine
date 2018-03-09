@@ -4,6 +4,7 @@
 #include "Scene\Scene.h"
 #include "Window\Window.h"
 #include "Input\InputManager.h"
+#include "Graphics\GraphicsManager.h"
 
 namespace DS
 {

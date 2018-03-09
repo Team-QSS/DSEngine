@@ -1,0 +1,26 @@
+#pragma once
+#include "../Utils/Utils.h"
+#include <d3d11.h>
+#include <dxgi.h>
+
+namespace DS
+{
+	class GraphicsManager final : public Singleton<GraphicsManager>
+	{
+	public:
+		GraphicsManager();
+		~GraphicsManager();
+
+		void initialize(HWND windowHandle, DirectX::XMINT2 resolution, bool isFullScreen);
+
+		void draw();
+	private:
+		IDXGISwapChain * m_SwapChain;
+		ID3D11Device * m_Device;
+		ID3D11DeviceContext * m_DeviceContext;
+		D3D_FEATURE_LEVEL m_FeatureLevel;
+		ID3D11RenderTargetView * m_RenderTargetView;
+		ID3D11Texture2D * m_DepthStencilBuffer;
+		ID3D11DepthStencilView * m_DepthStencilView;
+	};
+}
