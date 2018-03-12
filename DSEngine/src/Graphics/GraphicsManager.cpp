@@ -22,18 +22,9 @@ namespace DS
 		flag |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
-
-
-		result = D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, flag, nullptr, 0, D3D11_SDK_VERSION, 
-			&m_Device, &m_FeatureLevel, &m_DeviceContext);
-		if (FAILED(result))
-		{
-			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Creating Device and SwapChain Failed");
-		}
-
 		DXGI_SWAP_CHAIN_DESC sd;
 		sd.BufferCount = 2;
-		sd.BufferDesc.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
+		sd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 		sd.BufferDesc.Height = resolution.y;
 		sd.BufferDesc.RefreshRate.Denominator = 60;
 		sd.BufferDesc.RefreshRate.Numerator = 1;
@@ -48,47 +39,11 @@ namespace DS
 		sd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 		sd.Windowed = !isFullScreen;
 
-		IDXGIDevice* dxgiDevice = nullptr;
-		result = m_Device->QueryInterface(__uuidof(IDXGIDevice), reinterpret_cast<void **>(&dxgiDevice));
+		result = D3D11CreateDeviceAndSwapChain(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, flag, nullptr, 0, D3D11_SDK_VERSION, 
+			&sd, &m_SwapChain, &m_Device, &m_FeatureLevel, &m_DeviceContext);
 		if (FAILED(result))
 		{
-			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Get DXGIDevice Failed");
-		}
-
-		IDXGIAdapter* dxgiAdapter = nullptr;
-		result = dxgiDevice->GetParent(__uuidof(IDXGIAdapter), reinterpret_cast<void **>(&dxgiAdapter));
-		if (FAILED(result))
-		{
-			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Get DXGIAdapter Failed");
-		}
-
-		IDXGIFactory* dxgiFactory = nullptr;
-		result = dxgiAdapter->GetParent(__uuidof(IDXGIFactory), reinterpret_cast<void **>(&dxgiFactory));
-		if (FAILED(result))
-		{
-			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Get DXGIFactory");
-		}
-
-		result = dxgiFactory->CreateSwapChain(m_Device, &sd, &m_SwapChain);
-		if (FAILED(result))
-		{
-			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Create SwapChain Failed");
-		}
-
-		if (dxgiFactory)
-		{
-			dxgiFactory->Release();
-			dxgiFactory = nullptr;
-		}
-		if (dxgiAdapter)
-		{
-			dxgiAdapter->Release();
-			dxgiAdapter = nullptr;
-		}
-		if (dxgiDevice)
-		{
-			dxgiDevice->Release();
-			dxgiDevice = nullptr;
+			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Creating Device and SwapChain Failed");
 		}
 
 		ID3D11Texture2D* backBuffer = nullptr;
@@ -136,12 +91,12 @@ namespace DS
 		}
 
 		D3D11_VIEWPORT vp;
-		vp.Height = 1080;
+		vp.Height = resolution.y;
 		vp.MaxDepth = 1;
 		vp.MinDepth = 0;
 		vp.TopLeftX = 0;
 		vp.TopLeftY = 0;
-		vp.Width = 1920;
+		vp.Width = resolution.x;
 
 		m_DeviceContext->RSSetViewports(1, &vp);
 	}
@@ -151,5 +106,7 @@ namespace DS
 		float bg[4] = { 0.0f, 1.0f, 1.0f, 0.0f };
 		m_DeviceContext->ClearRenderTargetView(m_RenderTargetView, bg);
 		m_DeviceContext->ClearDepthStencilView(m_DepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+
+		m_SwapChain->Present(1, 0);
 	}
 }
