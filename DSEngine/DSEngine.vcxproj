@@ -140,6 +140,9 @@
     <ClInclude Include="src\Object\Object.h" />
     <ClInclude Include="src\Scene\Scene.h" />
     <ClInclude Include="src\Scene\SceneManager.h" />
+    <ClInclude Include="src\STB\stb_image.h" />
+    <ClInclude Include="src\STB\stb_truetype.h" />
+    <ClInclude Include="src\STB\stb_vorbis.h" />
     <ClInclude Include="src\Utils\Logger.h" />
     <ClInclude Include="src\Utils\Singleton.h" />
     <ClInclude Include="src\Utils\Utils.h" />

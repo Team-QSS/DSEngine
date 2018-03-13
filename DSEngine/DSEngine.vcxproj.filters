@@ -55,6 +55,9 @@
     <Filter Include="소스 파일\Graphics">
       <UniqueIdentifier>{9f853860-5d21-4bd0-abe6-f30d12d41847}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\STB">
+      <UniqueIdentifier>{f0549bd4-c617-433e-bba8-7ba28685f233}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -139,6 +142,15 @@
     </ClInclude>
     <ClInclude Include="src\Graphics\GraphicsManager.h">
       <Filter>헤더 파일\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\STB\stb_truetype.h">
+      <Filter>헤더 파일\STB</Filter>
+    </ClInclude>
+    <ClInclude Include="src\STB\stb_image.h">
+      <Filter>헤더 파일\STB</Filter>
+    </ClInclude>
+    <ClInclude Include="src\STB\stb_vorbis.h">
+      <Filter>헤더 파일\STB</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
