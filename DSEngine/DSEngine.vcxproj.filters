@@ -58,6 +58,9 @@
     <Filter Include="헤더 파일\STB">
       <UniqueIdentifier>{f0549bd4-c617-433e-bba8-7ba28685f233}</UniqueIdentifier>
     </Filter>
+    <Filter Include="셰이더 파일">
+      <UniqueIdentifier>{7cb63eba-c355-4910-904e-aa26c4ba55dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -98,6 +101,12 @@
     </ClCompile>
     <ClCompile Include="src\Graphics\GraphicsManager.cpp">
       <Filter>소스 파일\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\ShaderManager.cpp">
+      <Filter>소스 파일\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Component\SquareComponent.cpp">
+      <Filter>소스 파일\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +161,12 @@
     <ClInclude Include="src\STB\stb_vorbis.h">
       <Filter>헤더 파일\STB</Filter>
     </ClInclude>
+    <ClInclude Include="src\Graphics\ShaderManager.h">
+      <Filter>헤더 파일\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Component\SquareComponent.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\Singleton.inl">
@@ -160,5 +175,13 @@
     <None Include="src\Object\Object.inl">
       <Filter>소스 파일\Object</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="shader\PixelShader.hlsl">
+      <Filter>셰이더 파일</Filter>
+    </FxCompile>
+    <FxCompile Include="shader\VertexShader.hlsl">
+      <Filter>셰이더 파일</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

@@ -3,14 +3,55 @@
 
 namespace DS
 {
-	GraphicsManager::GraphicsManager()
+	GraphicsManager::GraphicsManager() :
+		m_SwapChain(nullptr),
+		m_Device(nullptr),
+		m_DeviceContext(nullptr),
+		m_RenderTargetView(nullptr),
+		m_DepthStencilView(nullptr),
+		m_DepthStencilBuffer(nullptr),
+		m_FeatureLevel(D3D_FEATURE_LEVEL_11_0)
 	{
 
 	}
 
 	GraphicsManager::~GraphicsManager()
 	{
+		if (m_SwapChain)
+		{
+			m_SwapChain->Release();
+			m_SwapChain = nullptr;
+		}
 
+		if (m_Device)
+		{
+			m_Device->Release();
+			m_Device = nullptr;
+		}
+
+		if (m_DeviceContext)
+		{
+			m_DeviceContext->Release();
+			m_DeviceContext = nullptr;
+		}
+
+		if (m_RenderTargetView)
+		{
+			m_RenderTargetView->Release();
+			m_RenderTargetView = nullptr;
+		}
+
+		if (m_DepthStencilBuffer)
+		{
+			m_DepthStencilBuffer->Release();
+			m_DepthStencilBuffer = nullptr;
+		}
+
+		if (m_DepthStencilView)
+		{
+			m_DepthStencilView->Release();
+			m_DepthStencilView = nullptr;
+		}
 	}
 
 	void GraphicsManager::initialize(HWND windowHandle, DirectX::XMINT2 resolution, bool isFullScreen)
@@ -99,6 +140,16 @@ namespace DS
 		vp.Width = resolution.x;
 
 		m_DeviceContext->RSSetViewports(1, &vp);
+	}
+
+	ID3D11Device * GraphicsManager::getDevice()
+	{
+		return m_Device;
+	}
+
+	ID3D11DeviceContext * GraphicsManager::getDeviceContext()
+	{
+		return m_DeviceContext;
 	}
 
 	void GraphicsManager::draw()
