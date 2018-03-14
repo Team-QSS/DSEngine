@@ -127,7 +127,13 @@
     <ClCompile Include="src\Object\Object.cpp" />
     <ClCompile Include="src\Scene\Scene.cpp" />
     <ClCompile Include="src\Scene\SceneManager.cpp" />
+    <ClCompile Include="src\Utils\FPS.cpp" />
     <ClCompile Include="src\Utils\Logger.cpp" />
+    <ClCompile Include="src\Utils\Time\Stopwatch.cpp" />
+    <ClCompile Include="src\Utils\Time\Time.cpp" />
+    <ClCompile Include="src\Utils\Time\TimeManager.cpp" />
+    <ClCompile Include="src\Utils\Time\Timer.cpp" />
+    <ClCompile Include="src\Utils\Time\TimerManager.cpp" />
     <ClCompile Include="src\Utils\Utils.cpp" />
     <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
@@ -147,8 +153,15 @@
     <ClInclude Include="src\STB\stb_image.h" />
     <ClInclude Include="src\STB\stb_truetype.h" />
     <ClInclude Include="src\STB\stb_vorbis.h" />
+    <ClInclude Include="src\Utils\FPS.h" />
     <ClInclude Include="src\Utils\Logger.h" />
     <ClInclude Include="src\Utils\Singleton.h" />
+    <ClInclude Include="src\Utils\Time\Context.h" />
+    <ClInclude Include="src\Utils\Time\Stopwatch.h" />
+    <ClInclude Include="src\Utils\Time\Time.h" />
+    <ClInclude Include="src\Utils\Time\TimeManager.h" />
+    <ClInclude Include="src\Utils\Time\Timer.h" />
+    <ClInclude Include="src\Utils\Time\TimerManager.h" />
     <ClInclude Include="src\Utils\Utils.h" />
     <ClInclude Include="src\Window\Window.h" />
   </ItemGroup>
