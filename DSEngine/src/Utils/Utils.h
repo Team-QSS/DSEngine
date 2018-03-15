@@ -5,7 +5,6 @@
 #include "Time\TimeManager.h"
 #include "Time\Context.h"
 #include "Time\Timer.h"
-#include "Time\TimerManager.h"
 
 namespace DS
 {
