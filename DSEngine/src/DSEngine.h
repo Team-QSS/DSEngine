@@ -12,8 +12,7 @@ namespace DS
 	class DSEngine final : public Singleton<DSEngine>
 	{
 	public:
-		DSEngine();
-		~DSEngine();
+		friend Singleton<DSEngine>;
 
 		void initialize(BaseGame& game, HINSTANCE instanceHandle, DirectX::XMINT2 windowSize, Scene& initialScene, tstring sceneName);
 
@@ -22,7 +21,10 @@ namespace DS
 		void goodBye();
 
 	private:
+		DSEngine();
+		~DSEngine();
 		
+
 		BaseGame* m_Game;
 		bool m_IsInitialized;
 		bool m_IsRunning;

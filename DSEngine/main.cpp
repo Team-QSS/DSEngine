@@ -24,11 +24,9 @@ int CALLBACK WinMain(HINSTANCE instanceHandle, HINSTANCE prevInstanceHandle, LPS
 {
 	DS::DSEngine::createInstance();
 
-	auto engine = DS::DSEngine::getInstance();
+	DS::DSEngine::getInstance().initialize(*(new TestGame()), instanceHandle, { 800, 600 }, *(new TestScene()), "test");
 
-	engine.initialize(*(new TestGame()), instanceHandle, { 800, 600 }, *(new TestScene()), "test");
-
-	engine.run();
+	DS::DSEngine::getInstance().run();
 
 	return 0;
 }

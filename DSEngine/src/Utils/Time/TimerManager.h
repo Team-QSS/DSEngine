@@ -12,8 +12,7 @@ namespace DS
 	class TimerManager final : public Singleton<TimerManager>
 	{
 	public:
-		TimerManager() {};
-		~TimerManager() {};
+		friend Singleton<TimerManager>;
 
 		void update(const Context& context);
 
@@ -37,6 +36,8 @@ namespace DS
 		float64 getTimerAccurateTime(const tstring& name) const;
 		
 	private:
+		TimerManager() {};
+		~TimerManager() {};
 
 		std::map<const tstring, Timer> m_TimerContainer;
 		std::map<const tstring, Timer> m_GarbageContainer;

@@ -11,15 +11,15 @@ namespace DS
 	class TimeManager final : public Singleton<TimeManager>
 	{
 	private:
-		
+		TimeManager() {};
+		~TimeManager() {};
 		TimeManager(const TimeManager& t) {};
 		TimeManager(TimeManager&& t) {};
 		TimeManager& operator= (const TimeManager& t) {};
 		TimeManager& operator= (TimeManager&& t) {};
 
 	public:
-		TimeManager() {};
-		~TimeManager() {};
+		friend Singleton<TimeManager>;
 
 		void startMonitoring();
 		void stopMonitoring();
