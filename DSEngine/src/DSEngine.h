@@ -1,10 +1,11 @@
 #pragma once
 #include "Utils\Utils.h"
 #include "Defines.h"
-#include "Scene\Scene.h"
+#include "Scene\SceneManager.h"
 #include "Window\Window.h"
 #include "Input\InputManager.h"
 #include "Graphics\GraphicsManager.h"
+#include "BaseGame.h"
 
 namespace DS
 {
@@ -25,5 +26,6 @@ namespace DS
 		BaseGame* m_Game;
 		bool m_IsInitialized;
 		bool m_IsRunning;
+		Context* m_Context;
 	};
 }

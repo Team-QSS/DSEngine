@@ -1,15 +1,5 @@
 #pragma once
-
-#ifndef LOG_MIN_LEVEL
-#define LOG_MIN_LEVEL 1
-#endif
-
-#include "BaseGame.h"
-#include "DSEngine.h"
-#include "Scene\SceneManager.h"
-
 #include <stdint.h>
-
 using int64 = int64_t;
 using int32 = int32_t;
 using int16 = int16_t;

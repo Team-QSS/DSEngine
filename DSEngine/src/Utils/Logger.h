@@ -1,6 +1,9 @@
 #pragma once
 #include "Utils.h"
 #include "../Defines.h"
+#ifndef LOG_MIN_LEVEL
+#define LOG_MIN_LEVEL 1
+#endif
 #include <string>
 #include <sstream>
 
