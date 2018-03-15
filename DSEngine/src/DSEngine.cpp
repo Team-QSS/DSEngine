@@ -55,7 +55,7 @@ namespace DS
 
 			m_Game->update(m_GameContext);
 
-			SceneManager::getInstance().getCurrentScene().update(1.0f);
+			SceneManager::getInstance().getCurrentScene().update(m_GameContext);
 
 			m_Game->draw();
 

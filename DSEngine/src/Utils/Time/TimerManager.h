@@ -13,6 +13,9 @@ namespace DS
 	class TimerManager final : Singleton<TimerManager>
 	{
 	public:
+		TimerManager() {};
+		~TimerManager() {};
+
 		void update(const Context& context);
 
 		bool createTimer(const tstring& name, float32 targetTime, bool countingDown,
@@ -39,8 +42,7 @@ namespace DS
 		std::map<const tstring, Timer> m_TimerContainer;
 		std::map<const tstring, Timer> m_GarbageContainer;
 		
-		TimerManager() {};
-		~TimerManager() {};
+
 		TimerManager(const TimerManager& yRef) {};
 		TimerManager(TimerManager&& yRef) {};
 		TimerManager& operator= (const TimerManager& yRef) {};
