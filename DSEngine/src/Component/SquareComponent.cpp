@@ -73,4 +73,17 @@ namespace DS
 			m_ConstantBuffer = nullptr;
 		}
 	}
+
+	void SquareComponent::onDraw()
+	{
+		ID3D11DeviceContext * deviceContext = GraphicsManager::getInstance().getDeviceContext();
+
+		UINT stride = sizeof(DirectX::XMFLOAT4);
+		UINT offset = 0;
+
+		deviceContext->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
+		deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		deviceContext->IASetIndexBuffer(m_IndexBuffer, DXGI_FORMAT_R32_UINT, 0);
+		deviceContext->DrawIndexed(6, 0, 0);
+	}
 }

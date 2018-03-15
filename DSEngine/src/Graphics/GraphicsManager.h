@@ -9,6 +9,9 @@ namespace DS
 	class GraphicsManager final : public Singleton<GraphicsManager>
 	{
 	public:
+		GraphicsManager();
+		~GraphicsManager();
+
 		void initialize(HWND windowHandle, DirectX::XMINT2 resolution, bool isFullScreen);
 
 		ID3D11Device * getDevice();
@@ -16,8 +19,6 @@ namespace DS
 
 		void draw();
 	private:
-		GraphicsManager();
-		~GraphicsManager();
 
 		IDXGISwapChain * m_SwapChain;
 		ID3D11Device * m_Device;
