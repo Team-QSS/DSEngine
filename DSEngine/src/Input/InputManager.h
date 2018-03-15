@@ -13,19 +13,20 @@ namespace DS
 		Right
 	};
 
-	using Key = char;
-
 	class InputManager final : public Singleton<InputManager>
 	{
 	public:
+		InputManager();
+		~InputManager();
+
 		void update();
 
 		//눌려있다면 true, 그외엔 false
-		bool isKeyDown(Key key) const;
+		bool isKeyDown(char key) const;
 		//해당 키를 누른 첫 프레임에만 true, 그외엔 false
-		bool isKeyPressed(Key key) const;
+		bool isKeyPressed(char key) const;
 		//해당 키를 뗀 첫 프레임에만 true, 그외엔 false
-		bool isKeyReleased(Key key) const;
+		bool isKeyReleased(char key) const;
 
 		//눌려있다면 true, 그외엔 false
 		bool isButtonDown(MouseButton button) const;
@@ -36,17 +37,12 @@ namespace DS
 
 		//마우스 커서 위치
 		DirectX::XMINT2 getCursorPos() const;
-
 	private:
 		static const int KEY_COUNT = 256;
 		static const int KEY_ID_MIN = 0x07;
 		static const int KEY_ID_MAX = 0xfe;
 
 	private:
-		InputManager();
-		~InputManager();
-		friend Singleton<InputManager>;
-
 		void updateKeyState();
 		void updateMouseState();
 

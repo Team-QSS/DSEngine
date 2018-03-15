@@ -12,9 +12,9 @@ namespace DS
 
 	}
 
-	void Component::update(Context &context)
+	void Component::update(float deltaTime)
 	{
-		onUpdate(context);
+		onUpdate(deltaTime);
 	}
 
 	void Component::draw()

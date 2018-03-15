@@ -19,14 +19,14 @@ namespace DS
 		m_UseFile = useFile;
 	}
 
-	void Logger::log(LogLevel level, const tstring& message, const BreakInfo& breakInfo)
+	void Logger::log(LogLevel level, const std::string& message, const BreakInfo& breakInfo)
 	{
 		log(level, "DSEngine", message, breakInfo);
 	}
 
-	void Logger::log(LogLevel level, const tstring& tag, const tstring& message, const BreakInfo& breakInfo)
+	void Logger::log(LogLevel level, const std::string& tag, const std::string& message, const BreakInfo& breakInfo)
 	{
-		tstringstream logText;
+		std::stringstream logText;
 		switch (level)
 		{
 		case LogLevel::Info:

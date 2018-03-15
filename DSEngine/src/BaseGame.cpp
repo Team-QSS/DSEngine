@@ -1,5 +1,4 @@
 #include "BaseGame.h"
-#include "Utils\Utils.h"
 
 namespace DS
 {
@@ -8,9 +7,9 @@ namespace DS
 		onInitialize();
 	}
 
-	void BaseGame::update(Context& context)
+	void BaseGame::update()
 	{
-		onUpdate(context);
+		onUpdate();
 	}
 
 	void BaseGame::draw()

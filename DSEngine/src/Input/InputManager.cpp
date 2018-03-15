@@ -58,7 +58,7 @@ namespace DS
 		m_PreMouseState[1] = temp;
 	}
 
-	bool InputManager::isKeyDown(Key key) const
+	bool InputManager::isKeyDown(char key) const
 	{
 		if (key <= KEY_ID_MIN || KEY_ID_MAX < key)
 		{
@@ -69,7 +69,7 @@ namespace DS
 		return m_CurKeyState[key];
 	}
 
-	bool InputManager::isKeyPressed(Key key) const
+	bool InputManager::isKeyPressed(char key) const
 	{
 		if (key <= KEY_ID_MIN || KEY_ID_MAX < key)
 		{
@@ -87,7 +87,7 @@ namespace DS
 		}
 	}
 
-	bool InputManager::isKeyReleased(Key key) const
+	bool InputManager::isKeyReleased(char key) const
 	{
 		if (key <= KEY_ID_MIN || KEY_ID_MAX < key)
 		{

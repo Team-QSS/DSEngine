@@ -5,8 +5,6 @@
 #include "Window\Window.h"
 #include "Input\InputManager.h"
 #include "Graphics\GraphicsManager.h"
-#include "Scene\SceneManager.h"
-#include "BaseGame.h"
 
 namespace DS
 {
@@ -27,7 +25,5 @@ namespace DS
 		BaseGame* m_Game;
 		bool m_IsInitialized;
 		bool m_IsRunning;
-
-		Context m_GameContext;
 	};
 }

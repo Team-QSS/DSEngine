@@ -2,8 +2,6 @@
 
 namespace DS
 {
-	struct Context;
-
 	class BaseGame
 	{
 	public:
@@ -11,13 +9,13 @@ namespace DS
 		virtual ~BaseGame() = default;
 
 		void initialize();
-		void update(Context& context);
+		void update();
 		void draw();
 		void destroy();
 
 	protected:
 		virtual void onInitialize() = 0;
-		virtual void onUpdate(Context& context) = 0;
+		virtual void onUpdate() = 0;
 		virtual void onDraw() = 0;
 		virtual void onDestroy() = 0;
 

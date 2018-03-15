@@ -1,16 +1,17 @@
 #pragma once
-#pragma comment(lib, "d3d11.lib")
 #include "../Utils/Utils.h"
 #include <d3d11.h>
 #include <dxgi.h>
-#include <DirectXMath.h>
-
+#pragma comment(lib, "d3d11.lib")
 
 namespace DS
 {
 	class GraphicsManager final : public Singleton<GraphicsManager>
 	{
 	public:
+		GraphicsManager();
+		~GraphicsManager();
+
 		void initialize(HWND windowHandle, DirectX::XMINT2 resolution, bool isFullScreen);
 
 		ID3D11Device * getDevice();
@@ -18,9 +19,6 @@ namespace DS
 
 		void draw();
 	private:
-		GraphicsManager();
-		~GraphicsManager();
-		friend Singleton<GraphicsManager>;
 
 		IDXGISwapChain * m_SwapChain;
 		ID3D11Device * m_Device;

@@ -4,7 +4,7 @@
 
 namespace DS
 {
-	void SceneManager::addScene(tstring name, Scene& scene)
+	void SceneManager::addScene(std::string name, Scene& scene)
 	{
 		if (!isSceneExist(name))
 		{
@@ -16,7 +16,7 @@ namespace DS
 		}		
 	}
 
-	void SceneManager::removeScene(tstring name)
+	void SceneManager::removeScene(std::string name)
 	{
 		if (isSceneExist(name))
 		{
@@ -29,7 +29,7 @@ namespace DS
 		
 	}
 
-	Scene& SceneManager::getScene(tstring name)
+	Scene& SceneManager::getScene(std::string name)
 	{
 		if (isSceneExist(name))
 		{
@@ -42,7 +42,7 @@ namespace DS
 		}
 	}
 
-	bool SceneManager::isSceneExist(tstring name) 
+	bool SceneManager::isSceneExist(std::string name) 
 	{
 		auto iter = m_Scenes.find(name);
 
@@ -56,7 +56,7 @@ namespace DS
 		}
 	}
 
-	void SceneManager::setCurrentScene(tstring name) 
+	void SceneManager::setCurrentScene(std::string name) 
 	{
 		m_CurrentScene = &getScene(name);
 	}

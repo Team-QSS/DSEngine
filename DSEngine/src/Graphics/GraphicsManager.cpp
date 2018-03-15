@@ -154,7 +154,7 @@ namespace DS
 
 	void GraphicsManager::draw()
 	{
-		float32 bg[4] = { 0.0f, 1.0f, 1.0f, 0.0f };
+		float bg[4] = { 0.0f, 1.0f, 1.0f, 0.0f };
 		m_DeviceContext->ClearRenderTargetView(m_RenderTargetView, bg);
 		m_DeviceContext->ClearDepthStencilView(m_DepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
 

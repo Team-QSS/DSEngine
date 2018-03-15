@@ -9,7 +9,6 @@ namespace DS
 {
 	class Component;
 	class TransformComponent;
-	struct Context;
   
 	class Object
 	{
@@ -23,7 +22,7 @@ namespace DS
 		Scene& getScene() const;
 
 	protected:
-		virtual void onUpdate(Context& context) = 0;
+		virtual void onUpdate(float deltaTime) = 0;
 		virtual void onDraw() {};
 
 		void addComponent(Component& component);
@@ -59,7 +58,7 @@ namespace DS
 			void* element;
 		};
 
-		void update(Context& context);
+		void update(float deltaTime);
 		void draw();
 
 		void setScene(Scene* scene);
@@ -77,7 +76,7 @@ namespace DS
 		std::set<Object*> m_Children;
 		std::vector<Garbage> m_GarbageCollector;
 
-		friend void Scene::update(Context& context);
+		friend void Scene::update(float deltaTime);
 		friend void Scene::draw();
 
 		friend class Component;
