@@ -1,10 +1,11 @@
 #pragma once
-#include "TimeManager.h"
 
 namespace DS 
 {
+	class TimeManager;
+
 	struct Context
 	{
-		TimeManager* time;
+		TimeManager * time;
 	};
 }
