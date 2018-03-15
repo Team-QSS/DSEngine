@@ -1,6 +1,6 @@
 #include "TimerManager.h"
-#include "Timer.h"
 #include "Context.h"
+#include "Timer.h"
 #include <algorithm>
 
 namespace DS

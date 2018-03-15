@@ -1,6 +1,6 @@
 #pragma once
-#include "Utils\Utils.h"
 #include "Defines.h"
+#include "Utils\Utils.h"
 #include "Scene\SceneManager.h"
 #include "Window\Window.h"
 #include "Input\InputManager.h"
@@ -26,6 +26,6 @@ namespace DS
 		BaseGame* m_Game;
 		bool m_IsInitialized;
 		bool m_IsRunning;
-		Context* m_Context;
+		Context m_GameContext;
 	};
 }

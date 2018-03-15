@@ -1,7 +1,6 @@
 #pragma once
-
 #include "..\..\Defines.h"
-#include "..\Utils.h"
+#include "../Singleton.h"
 #include <map>
 #include <functional>
 
@@ -10,7 +9,7 @@ namespace DS
 	struct Context;
 	class Timer;
 
-	class TimerManager final : Singleton<TimerManager>
+	class TimerManager final : public Singleton<TimerManager>
 	{
 	public:
 		TimerManager() {};

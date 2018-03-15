@@ -2,8 +2,8 @@
 
 #include "..\..\Defines.h"
 #include "..\Utils.h"
-#include <memory>
 #include "Time.h"
+#include <memory>
 #include <chrono>
 
 namespace DS
@@ -16,10 +16,9 @@ namespace DS
 		TimeManager(TimeManager&& t) {};
 		TimeManager& operator= (const TimeManager& t) {};
 		TimeManager& operator= (TimeManager&& t) {};
-		
 
 	public:
-		TimeManager();
+		TimeManager() {};
 		~TimeManager() {};
 
 		void startMonitoring();
