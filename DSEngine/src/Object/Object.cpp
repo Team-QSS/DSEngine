@@ -56,22 +56,22 @@ namespace DS
 		return *m_Scene;
 	}
 
-	void Object::update(float deltaTime)
+	void Object::update(Context& context)
 	{
 		collectGarbage();
 
 		if (!m_IsActive) return;
 
-		onUpdate(deltaTime);
+		onUpdate(context);
 
 		for (auto iter = m_Components.begin(); iter != m_Components.end(); iter++)
 		{
-			iter->second->update(deltaTime);
+			iter->second->update(context);
 		}
 
 		for (Object* child : m_Children)
 		{
-			child->update(deltaTime);
+			child->update(context);
 		}
 	}
 

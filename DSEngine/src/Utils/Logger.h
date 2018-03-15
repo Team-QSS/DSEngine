@@ -4,6 +4,10 @@
 #include <string>
 #include <sstream>
 
+#ifndef LOG_MIN_LEVEL
+#define LOG_MIN_LEVEL 1
+#endif
+
 namespace DS
 {
 	enum LogLevel
@@ -16,30 +20,31 @@ namespace DS
 
 	struct BreakInfo
 	{
-		std::string file;
+		tstring file;
 		int line;
 
-		BreakInfo(const std::string& file, int line): file(file), line(line) {}
+		BreakInfo(const tstring& file, int line): file(file), line(line) {}
 	};
 
 	class Logger final : public Singleton<Logger>
 	{
 	public:
-		Logger() {};
-		virtual ~Logger();
-
 		void initialize(bool useConsole, bool useFile = false);
 
-		void log(LogLevel level, const std::string& tag, const std::string& message, const BreakInfo& breakInfo);
-		void log(LogLevel level, const std::string& message, const BreakInfo& breakInfo);
+		void log(LogLevel level, const tstring& tag, const tstring& message, const BreakInfo& breakInfo);
+		void log(LogLevel level, const tstring& message, const BreakInfo& breakInfo);
 
 		void writeLogFile();
 
 
 	private:
+		Logger() {};
+		~Logger();
+		friend Singleton<Logger>;
+
 		bool m_UseConsole;
 		bool m_UseFile;
-		std::stringstream m_LogBuffer;
+		tstringstream m_LogBuffer;
 	};
 }
 

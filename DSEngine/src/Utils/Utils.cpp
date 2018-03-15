@@ -2,7 +2,7 @@
 
 namespace DS
 {
-	int terminate(int exitCode)
+	void terminate(int32 exitCode)
 	{
 		Logger::destroyInstance();
 		exit(exitCode);

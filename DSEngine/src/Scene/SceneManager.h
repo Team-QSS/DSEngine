@@ -8,20 +8,21 @@ namespace DS
 	class SceneManager final : public Singleton<SceneManager>
 	{
 	public:
-		SceneManager() {}
-		virtual ~SceneManager() {}
-		
-		void addScene(std::string name, Scene& scene);
-		void removeScene(std::string name);
+		void addScene(tstring name, Scene& scene);
+		void removeScene(tstring name);
 
-		Scene& getScene(std::string name);
-		bool isSceneExist(std::string name);
+		Scene& getScene(tstring name);
+		bool isSceneExist(tstring name);
 
-		void setCurrentScene(std::string name);
+		void setCurrentScene(tstring name);
 		Scene& getCurrentScene();
 
 	private:
-		std::map<std::string, Scene*> m_Scenes;
+		SceneManager() {}
+		~SceneManager() {}
+		friend Singleton<SceneManager>;
+
+		std::map<tstring, Scene*> m_Scenes;
 		Scene* m_CurrentScene;
 	};
 }

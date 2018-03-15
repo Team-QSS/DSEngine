@@ -9,14 +9,15 @@ namespace DS
 	class ShaderManager final : public Singleton<ShaderManager>
 	{
 	public:
-		void bindVertexShader(std::string name);
-		void bindPixelShader(std::string name);
+		void bindVertexShader(tstring name);
+		void bindPixelShader(tstring name);
 
 	private:
 		ShaderManager();
 		~ShaderManager();
+		friend Singleton<ShaderManager>;
 
-		std::map<std::string, ID3D11VertexShader *>m_VertexShaders;
-		std::map<std::string, ID3D11PixelShader *>m_PixelShaders;
+		std::map<tstring, ID3D11VertexShader *>m_VertexShaders;
+		std::map<tstring, ID3D11PixelShader *>m_PixelShaders;
 	};
 }
