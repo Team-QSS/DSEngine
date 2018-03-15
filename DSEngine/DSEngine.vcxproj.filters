@@ -120,9 +120,6 @@
     <ClCompile Include="src\Utils\Time\TimerManager.cpp">
       <Filter>소스 파일\Utils\Time</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utils\Time\Stopwatch.cpp">
-      <Filter>소스 파일\Utils\Time</Filter>
-    </ClCompile>
     <ClCompile Include="src\Utils\FPS.cpp">
       <Filter>소스 파일\Utils</Filter>
     </ClCompile>
@@ -131,6 +128,9 @@
     </ClCompile>
     <ClCompile Include="src\Component\SquareComponent.cpp">
       <Filter>소스 파일\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\Time\Stopwatch.cpp">
+      <Filter>소스 파일\Utils\Time</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

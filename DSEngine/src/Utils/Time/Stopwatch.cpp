@@ -23,10 +23,10 @@ namespace DS
 	}
 	
 	Stopwatch::Stopwatch(Stopwatch&& yRef) :
-		m_isPaused(yRef.m_isPaused),
-		m_isStarted(yRef.m_isStarted),
-		m_TimePairVec(yRef.m_TimePairVec),
-		m_Laps(yRef.m_Laps)
+		m_isPaused(std::move(yRef.m_isPaused)),
+		m_isStarted(std::move(yRef.m_isStarted)),
+		m_TimePairVec(std::move(yRef.m_TimePairVec)),
+		m_Laps(std::move(yRef.m_Laps))
 	{
 
 	}
@@ -47,10 +47,10 @@ namespace DS
 
 	Stopwatch& Stopwatch::operator= (Stopwatch&& yRef)
 	{
-		m_isPaused = yRef.m_isPaused;
-		m_isStarted = yRef.m_isStarted;
-		m_TimePairVec = yRef.m_TimePairVec;
-		m_Laps = yRef.m_Laps;
+		m_isPaused = std::move(yRef.m_isPaused);
+		m_isStarted = std::move(yRef.m_isStarted);
+		m_TimePairVec = std::move(yRef.m_TimePairVec);
+		m_Laps = std::move(yRef.m_Laps);
 		return *this;
 	}
 	
