@@ -1,6 +1,7 @@
 #pragma once
 #include "..\..\Defines.h"
 #include "../Singleton.h"
+#include "Timer.h"
 #include <map>
 #include <functional>
 

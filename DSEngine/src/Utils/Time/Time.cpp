@@ -17,6 +17,12 @@ namespace DS
 		
 	}
 
+	Time::Time(Time&& t)
+		: m_Duration(t.m_Duration)
+	{
+
+	}
+
 	Time::~Time()
 	{
 		

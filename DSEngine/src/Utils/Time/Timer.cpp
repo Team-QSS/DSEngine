@@ -15,6 +15,7 @@ namespace DS
 	{
 
 	}
+
 	Timer::Timer(float64 targetTime, bool countingDown, bool loop,
 			std::function<void()> func, bool paused) :
 		m_TargetTime(1.0f),
@@ -27,8 +28,6 @@ namespace DS
 	{
 
 	}
-	
-	
 
 	Timer::Timer(const Timer& yRef) :
 		m_TargetTime(yRef.m_TargetTime),

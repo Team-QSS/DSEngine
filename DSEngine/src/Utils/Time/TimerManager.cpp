@@ -2,6 +2,7 @@
 #include "Context.h"
 #include "Timer.h"
 #include <algorithm>
+#include <string>
 
 namespace DS
 {
