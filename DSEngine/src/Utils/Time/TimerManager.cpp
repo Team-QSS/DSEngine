@@ -6,7 +6,7 @@
 
 namespace DS
 {
-	void TimerManager::update(const Context& context)
+	/*void TimerManager::update(const Context& context)
 	{
 		for (auto& it : m_GarbageContainer)
 		{
@@ -238,5 +238,5 @@ namespace DS
 				return it.second.getCurrentAccurateTime();
 			}
 		}
-	}
+	}*/
 }
