@@ -7,9 +7,9 @@ namespace DS
 		onInitialize();
 	}
 
-	void BaseGame::update()
+	void BaseGame::update(Context& context)
 	{
-		onUpdate();
+		onUpdate(context);
 	}
 
 	void BaseGame::draw()

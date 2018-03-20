@@ -15,7 +15,7 @@ namespace DS
 		
 	}
 
-	void DSEngine::initialize(BaseGame& game, HINSTANCE instanceHandle, DirectX::XMINT2 windowSize, Scene& initialScene, std::string sceneName)
+	void DSEngine::initialize(BaseGame& game, HINSTANCE instanceHandle, DirectX::XMINT2 windowSize, Scene& initialScene, tstring sceneName)
 	{
 		if (m_IsInitialized) //중복 초기화 검사
 		{
@@ -53,9 +53,9 @@ namespace DS
 
 			Window::getInstance().peekMessage();
 
-			m_Game->update();
+			m_Game->update(m_GameContext);
 
-			SceneManager::getInstance().getCurrentScene().update(1.0f);
+			SceneManager::getInstance().getCurrentScene().update(m_GameContext);
 
 			m_Game->draw();
 

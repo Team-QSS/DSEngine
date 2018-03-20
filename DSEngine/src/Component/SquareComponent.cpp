@@ -1,4 +1,5 @@
 #include "SquareComponent.h"
+#include "../Graphics/GraphicsManager.h"
 
 namespace DS
 {
