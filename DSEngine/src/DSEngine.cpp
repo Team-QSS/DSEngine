@@ -5,9 +5,18 @@ namespace DS
 	DSEngine::DSEngine() :
 		m_Game(nullptr),
 		m_IsInitialized(false),
-		m_IsRunning(false)
+		m_IsRunning(false),
+		m_InputManager(nullptr),
+		m_Window(nullptr),
+		m_SceneManager(nullptr),
+		m_GraphicsManager(nullptr)
 	{
+		m_InputManager = &InputManager::getInstance();
+		m_Window = &Window::getInstance();
+		m_SceneManager = &SceneManager::getInstance();
+		m_GraphicsManager = &GraphicsManager::getInstance();
 
+		m_Context.time = &TimeManager::getInstance();
 	}
 
 	DSEngine::~DSEngine()
@@ -49,21 +58,27 @@ namespace DS
 	{
 		while (m_IsRunning)
 		{
-			InputManager::getInstance().update();
-
-			Window::getInstance().peekMessage();
-
-			m_Game->update(m_GameContext);
-
-			SceneManager::getInstance().getCurrentScene().update(m_GameContext);
-
-			m_Game->draw();
-
-			GraphicsManager::getInstance().draw();
-
-			SceneManager::getInstance().getCurrentScene().draw();
+			DSEngine::update();
+			DSEngine::draw();
 		}
 	}
+
+	void DSEngine::update()
+	{
+		m_InputManager->update();
+		m_Window->peekMessage();
+		m_Game->update(m_Context);
+		m_SceneManager->getCurrentScene().update(m_Context);
+	}
+
+	void DSEngine::draw()
+	{
+		m_Game->draw();
+		m_GraphicsManager->draw();
+		m_SceneManager->getCurrentScene().draw();
+		m_FPS.update(m_Context);
+	}
+
 
 	void DSEngine::goodBye()
 	{
