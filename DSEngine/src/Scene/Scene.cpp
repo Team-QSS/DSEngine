@@ -62,7 +62,7 @@ namespace DS
 
 	int Scene::objectQuantity() 
 	{
-		return m_Objects.size();
+		return (int32) m_Objects.size();
 	}
 
 	void Scene::update(Context& context)

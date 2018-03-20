@@ -1,6 +1,7 @@
 #pragma once
 #include "..\..\Defines.h"
 #include "../Singleton.h"
+#include "Timer.h"
 #include <map>
 #include <functional>
 
@@ -14,7 +15,7 @@ namespace DS
 	public:
 		friend Singleton<TimerManager>;
 
-		void update(const Context& context);
+		/*void update(const Context& context);
 
 		bool createTimer(const tstring& name, float32 targetTime, bool countingDown,
 			bool loop, std::function<void()> func, bool paused = false);
@@ -46,6 +47,6 @@ namespace DS
 		TimerManager(const TimerManager& yRef) {};
 		TimerManager(TimerManager&& yRef) {};
 		TimerManager& operator= (const TimerManager& yRef) {};
-		TimerManager& operator= (TimerManager&& yRef) {};
+		TimerManager& operator= (TimerManager&& yRef) {};*/
 	};
 }

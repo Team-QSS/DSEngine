@@ -8,8 +8,7 @@ namespace DS
 	class Window final : public Singleton<Window>
 	{
 	public:
-		Window();
-		~Window();
+		friend Singleton<Window>;
 
 		void initialize(HINSTANCE instanceHandle, int x_Size, int y_Size);
 		void initialize(HINSTANCE instanceHandle, DirectX::XMINT2 size);
@@ -34,6 +33,9 @@ namespace DS
 		static LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 	private:
+		Window();
+		~Window();
+
 		HWND m_WindowHandle;
 
 		bool m_IsInitialized;

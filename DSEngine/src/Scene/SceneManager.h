@@ -2,6 +2,7 @@
 #include <map>
 #include "../Utils/Utils.h"
 #include "Scene.h"
+#include "../Defines.h"
 
 namespace DS
 {
@@ -23,7 +24,7 @@ namespace DS
 		SceneManager() {}
 		~SceneManager() {}
 
-		std::map<std::string, Scene*> m_Scenes;
+		std::map<tstring, Scene*> m_Scenes;
 		Scene* m_CurrentScene;
 	};
 }

@@ -4,6 +4,7 @@
 #include <set>
 #include <map>
 #include "../Scene/Scene.h"
+#include "../Defines.h"
 
 namespace DS
 {
@@ -73,7 +74,7 @@ namespace DS
 		Scene* m_Scene;
 		Object* m_Parent;
 
-		std::map<std::string, Component *> m_Components;
+		std::map<tstring, Component *> m_Components;
 		std::set<Object*> m_Children;
 		std::vector<Garbage> m_GarbageCollector;
 

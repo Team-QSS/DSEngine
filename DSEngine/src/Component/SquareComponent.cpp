@@ -74,4 +74,12 @@ namespace DS
 			m_ConstantBuffer = nullptr;
 		}
 	}
+
+	void SquareComponent::onDraw()
+	{
+		ID3D11DeviceContext * deviceContext = GraphicsManager::getInstance().getDeviceContext();
+
+		UINT stride = sizeof(DirectX::XMFLOAT4);
+		deviceContext->IASetVertexBuffers(0, 1, &m_VertexBuffer, )
+	}
 }

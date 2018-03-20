@@ -9,6 +9,8 @@ namespace DS
 	class ShaderManager final : public Singleton<ShaderManager>
 	{
 	public:
+		friend Singleton<ShaderManager>;
+
 		void bindVertexShader(std::string name);
 		void bindPixelShader(std::string name);
 
@@ -18,5 +20,6 @@ namespace DS
 
 		std::map<std::string, ID3D11VertexShader *>m_VertexShaders;
 		std::map<std::string, ID3D11PixelShader *>m_PixelShaders;
+
 	};
 }
