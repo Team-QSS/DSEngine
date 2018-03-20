@@ -80,6 +80,11 @@ namespace DS
 		ID3D11DeviceContext * deviceContext = GraphicsManager::getInstance().getDeviceContext();
 
 		UINT stride = sizeof(DirectX::XMFLOAT4);
-		deviceContext->IASetVertexBuffers(0, 1, &m_VertexBuffer, )
+		UINT offset = 0;
+
+		deviceContext->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
+		deviceContext->IASetIndexBuffer(m_IndexBuffer, DXGI_FORMAT_R32_UINT, 0);
+		deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		deviceContext->DrawIndexed(6, 0, 0);
 	}
 }

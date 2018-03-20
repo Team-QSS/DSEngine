@@ -7,6 +7,8 @@ namespace DS
 {
 	class Window;
 
+	using Key = char;
+
 	enum class MouseButton
 	{
 		Left,
@@ -21,11 +23,11 @@ namespace DS
 		void update();
 
 		//눌려있다면 true, 그외엔 false
-		bool isKeyDown(char key) const;
+		bool isKeyDown(Key key) const;
 		//해당 키를 누른 첫 프레임에만 true, 그외엔 false
-		bool isKeyPressed(char key) const;
+		bool isKeyPressed(Key key) const;
 		//해당 키를 뗀 첫 프레임에만 true, 그외엔 false
-		bool isKeyReleased(char key) const;
+		bool isKeyReleased(Key key) const;
 
 		//눌려있다면 true, 그외엔 false
 		bool isButtonDown(MouseButton button) const;
