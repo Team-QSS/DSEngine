@@ -1,11 +1,12 @@
 #include "TimerManager.h"
-#include "Timer.h"
 #include "Context.h"
+#include "Timer.h"
 #include <algorithm>
+#include <string>
 
 namespace DS
 {
-	void TimerManager::update(const Context& context)
+	/*void TimerManager::update(const Context& context)
 	{
 		for (auto& it : m_GarbageContainer)
 		{
@@ -237,5 +238,5 @@ namespace DS
 				return it.second.getCurrentAccurateTime();
 			}
 		}
-	}
+	}*/
 }

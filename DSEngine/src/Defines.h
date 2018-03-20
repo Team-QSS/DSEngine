@@ -1,14 +1,12 @@
 #pragma once
-
-#ifndef LOG_MIN_LEVEL
-#define LOG_MIN_LEVEL 1
-#endif
-
-#include "BaseGame.h"
-#include "DSEngine.h"
-#include "Scene\SceneManager.h"
-
 #include <stdint.h>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <fstream>
+
+#include <Windows.h>
+#include <cstdlib>
 
 using int64 = int64_t;
 using int32 = int32_t;
@@ -23,15 +21,6 @@ using uint8_t = uint8_t;
 using float32 = float;
 using float64 = double;
 using float128 = long double;
-
-
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <fstream>
-
-#include <Windows.h>
-#include <cstdlib>
 
 using tstring = std::string;
 using tstringstream = std::stringstream;

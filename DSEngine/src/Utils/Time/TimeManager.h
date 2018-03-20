@@ -2,8 +2,8 @@
 
 #include "..\..\Defines.h"
 #include "..\Utils.h"
-#include <memory>
 #include "Time.h"
+#include <memory>
 #include <chrono>
 
 namespace DS
@@ -11,12 +11,12 @@ namespace DS
 	class TimeManager final : public Singleton<TimeManager>
 	{
 	private:
-		TimeManager();
+		TimeManager() {};
+		~TimeManager() {};
 		TimeManager(const TimeManager& t) {};
 		TimeManager(TimeManager&& t) {};
 		TimeManager& operator= (const TimeManager& t) {};
 		TimeManager& operator= (TimeManager&& t) {};
-		~TimeManager() {};
 
 	public:
 		friend Singleton<TimeManager>;

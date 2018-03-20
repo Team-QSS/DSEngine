@@ -4,11 +4,13 @@
 #include <set>
 #include <map>
 #include "../Scene/Scene.h"
+#include "../Defines.h"
 
 namespace DS
 {
 	class Component;
 	class TransformComponent;
+	struct Context;
   
 	class Object
 	{
@@ -22,7 +24,7 @@ namespace DS
 		Scene& getScene() const;
 
 	protected:
-		virtual void onUpdate(float deltaTime) = 0;
+		virtual void onUpdate(Context& context) = 0;
 		virtual void onDraw() {};
 
 		void addComponent(Component& component);
@@ -58,7 +60,7 @@ namespace DS
 			void* element;
 		};
 
-		void update(float deltaTime);
+		void update(Context& context);
 		void draw();
 
 		void setScene(Scene* scene);
@@ -72,11 +74,11 @@ namespace DS
 		Scene* m_Scene;
 		Object* m_Parent;
 
-		std::map<std::string, Component *> m_Components;
+		std::map<tstring, Component *> m_Components;
 		std::set<Object*> m_Children;
 		std::vector<Garbage> m_GarbageCollector;
 
-		friend void Scene::update(float deltaTime);
+		friend void Scene::update(Context& context);
 		friend void Scene::draw();
 
 		friend class Component;

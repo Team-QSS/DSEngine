@@ -62,10 +62,10 @@ namespace DS
 
 	int Scene::objectQuantity() 
 	{
-		return m_Objects.size();
+		return (int32) m_Objects.size();
 	}
 
-	void Scene::update(float deltaTime)
+	void Scene::update(Context& context)
 	{
 		collectGarbage();
 
@@ -73,10 +73,10 @@ namespace DS
 		{
 			if (o->isActive()) 
 			{
-				o->update(deltaTime);
+				o->update(context);
 			}
 		}
-		onUpdate(deltaTime); //게임 프로그래머가 update시 해야 할 동작을 적으면 실행됨
+		onUpdate(context); //게임 프로그래머가 update시 해야 할 동작을 적으면 실행됨
 	}
 	
 	void Scene::draw() 

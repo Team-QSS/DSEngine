@@ -1,7 +1,7 @@
 #pragma once
-
 #include "..\..\Defines.h"
-#include "..\Utils.h"
+#include "../Singleton.h"
+#include "Timer.h"
 #include <map>
 #include <functional>
 
@@ -10,10 +10,12 @@ namespace DS
 	struct Context;
 	class Timer;
 
-	class TimerManager final : Singleton<TimerManager>
+	class TimerManager final : public Singleton<TimerManager>
 	{
 	public:
-		void update(const Context& context);
+		friend Singleton<TimerManager>;
+
+		/*void update(const Context& context);
 
 		bool createTimer(const tstring& name, float32 targetTime, bool countingDown,
 			bool loop, std::function<void()> func, bool paused = false);
@@ -35,15 +37,16 @@ namespace DS
 		float64 getTimerAccurateTime(const tstring& name) const;
 		
 	private:
+		TimerManager() {};
+		~TimerManager() {};
 
 		std::map<const tstring, Timer> m_TimerContainer;
 		std::map<const tstring, Timer> m_GarbageContainer;
 		
-		TimerManager() {};
-		~TimerManager() {};
+
 		TimerManager(const TimerManager& yRef) {};
 		TimerManager(TimerManager&& yRef) {};
 		TimerManager& operator= (const TimerManager& yRef) {};
-		TimerManager& operator= (TimerManager&& yRef) {};
+		TimerManager& operator= (TimerManager&& yRef) {};*/
 	};
 }

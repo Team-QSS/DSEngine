@@ -1,6 +1,5 @@
 #include "FPS.h"
-#include "Time\Time.h"
-#include "Time\Context.h"
+#include "../Utils/Utils.h"
 
 namespace DS
 {

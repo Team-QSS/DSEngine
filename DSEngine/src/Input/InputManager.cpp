@@ -114,6 +114,7 @@ namespace DS
 			case MouseButton::Right:
 				return m_CurMouseState[1];
 		}
+		return false;
 	}
 
 	bool InputManager::isButtonPressed(MouseButton button) const
@@ -125,6 +126,7 @@ namespace DS
 		case MouseButton::Right:
 			return !m_PreMouseState[1] && m_CurMouseState[1];
 		}
+		return false;
 	}
 
 	bool InputManager::isButtonReleased(MouseButton button) const
@@ -136,6 +138,7 @@ namespace DS
 		case MouseButton::Right:
 			return m_PreMouseState[1] && !m_CurMouseState[1];
 		}
+		return false;
 	}
 
 	DirectX::XMINT2 InputManager::getCursorPos() const

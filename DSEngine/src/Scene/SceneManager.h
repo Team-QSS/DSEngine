@@ -2,14 +2,14 @@
 #include <map>
 #include "../Utils/Utils.h"
 #include "Scene.h"
+#include "../Defines.h"
 
 namespace DS
 {
 	class SceneManager final : public Singleton<SceneManager>
 	{
 	public:
-		SceneManager() {}
-		virtual ~SceneManager() {}
+		friend Singleton<SceneManager>;
 		
 		void addScene(std::string name, Scene& scene);
 		void removeScene(std::string name);
@@ -21,7 +21,10 @@ namespace DS
 		Scene& getCurrentScene();
 
 	private:
-		std::map<std::string, Scene*> m_Scenes;
+		SceneManager() {}
+		~SceneManager() {}
+
+		std::map<tstring, Scene*> m_Scenes;
 		Scene* m_CurrentScene;
 	};
 }

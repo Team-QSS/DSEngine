@@ -3,6 +3,8 @@
 
 namespace DS
 {
+	struct Context;
+
 	class Component
 	{
 	public:
@@ -10,14 +12,14 @@ namespace DS
 		virtual ~Component();
 
 	protected:
-		virtual void onUpdate(float deltaTime) {};
+		virtual void onUpdate(Context& context) {};
 		virtual void onDraw() {};
 
 	private:
-		void update(float deltaTime);
+		void update(Context& context);
 		void draw();
 
-		friend void Object::update(float deltaTime);
+		friend void Object::update(Context& context);
 		friend void Object::draw();
 	};
 }

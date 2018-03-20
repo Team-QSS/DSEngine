@@ -1,6 +1,9 @@
 #pragma once
 #include "Utils.h"
 #include "../Defines.h"
+#ifndef LOG_MIN_LEVEL
+#define LOG_MIN_LEVEL 1
+#endif
 #include <string>
 #include <sstream>
 
@@ -25,8 +28,7 @@ namespace DS
 	class Logger final : public Singleton<Logger>
 	{
 	public:
-		Logger() {};
-		virtual ~Logger();
+		friend Singleton<Logger>;
 
 		void initialize(bool useConsole, bool useFile = false);
 
@@ -37,6 +39,9 @@ namespace DS
 
 
 	private:
+		Logger() {};
+		~Logger();
+
 		bool m_UseConsole;
 		bool m_UseFile;
 		std::stringstream m_LogBuffer;

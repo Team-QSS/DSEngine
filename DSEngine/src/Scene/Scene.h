@@ -6,6 +6,7 @@ namespace DS
 {
 	class Object;
 	class DSEngine;
+	struct Context;
 
 	class Scene
 	{
@@ -14,7 +15,7 @@ namespace DS
 		virtual ~Scene();
 
 	protected:
-		virtual void onUpdate(float deltaTime) = 0;
+		virtual void onUpdate(Context& context) = 0;
 		virtual void onDraw() {};
 
 		void addObject(Object& object);
@@ -26,8 +27,9 @@ namespace DS
 		void collectGarbage();
 
 	private:
-		void update(float deltaTime);
+		void update(Context& context);
 		void draw();
+
 		std::set<Object*> m_Objects; //현재 오브젝트들을 담는 컨테이너
 		std::vector<Object*> m_GarbageCollector;
 

@@ -16,8 +16,7 @@ namespace DS
 	class InputManager final : public Singleton<InputManager>
 	{
 	public:
-		InputManager();
-		~InputManager();
+		friend Singleton<InputManager>;
 
 		void update();
 
@@ -43,6 +42,9 @@ namespace DS
 		static const int KEY_ID_MAX = 0xfe;
 
 	private:
+		InputManager();
+		~InputManager();
+
 		void updateKeyState();
 		void updateMouseState();
 

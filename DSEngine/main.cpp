@@ -1,6 +1,7 @@
 #include <iostream>
 #define LOG_MIN_LEVEL 1
 #include "src\Defines.h"
+#include "src\DSEngine.h"
 
 using namespace std;
 
@@ -8,7 +9,7 @@ class TestGame : public DS::BaseGame
 {
 protected:
 	virtual void onInitialize() override {}
-	virtual void onUpdate() override {}
+	virtual void onUpdate(DS::Context& context) override {}
 	virtual void onDraw() override {}
 	virtual void onDestroy() override {}
 };
@@ -16,18 +17,16 @@ protected:
 class TestScene : public DS::Scene
 {
 protected:
-	virtual void onUpdate(float deltaTime) override {}
+	virtual void onUpdate(DS::Context& context) override {}
 };
 
 int CALLBACK WinMain(HINSTANCE instanceHandle, HINSTANCE prevInstanceHandle, LPSTR cmdString, int show)
 {
 	DS::DSEngine::createInstance();
 
-	auto engine = DS::DSEngine::getInstance();
+	DS::DSEngine::getInstance().initialize(*(new TestGame()), instanceHandle, { 800, 600 }, *(new TestScene()), "test");
 
-	engine.initialize(*(new TestGame()), instanceHandle, { 800, 600 }, *(new TestScene()), "test");
-
-	engine.run();
+	DS::DSEngine::getInstance().run();
 
 	return 0;
 }

@@ -1,9 +1,11 @@
 #pragma once
-#include "TimeManager.h"
 
-namespace DS {
+namespace DS 
+{
+	class TimeManager;
+
 	struct Context
 	{
-		TimeManager* time;
+		TimeManager * time;
 	};
 }

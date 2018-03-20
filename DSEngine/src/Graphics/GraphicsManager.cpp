@@ -132,12 +132,12 @@ namespace DS
 		}
 
 		D3D11_VIEWPORT vp;
-		vp.Height = resolution.y;
+		vp.Height = (float32) resolution.y;
 		vp.MaxDepth = 1;
 		vp.MinDepth = 0;
 		vp.TopLeftX = 0;
 		vp.TopLeftY = 0;
-		vp.Width = resolution.x;
+		vp.Width = (float32) resolution.x;
 
 		m_DeviceContext->RSSetViewports(1, &vp);
 	}
