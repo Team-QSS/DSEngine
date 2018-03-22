@@ -6,46 +6,87 @@
 namespace DS
 {
 	ShaderManager::ShaderManager():
-		m_VShader(nullptr),
+		m_pShader(nullptr),
 		m_PShader(nullptr),
 		m_Layout(nullptr)
 	{
-		ID3D11Device * device = GraphicsManager::getInstance().getDevice();
+		ID3D11Depice * depice = GraphicsManager::getInstance().getDepice();
 		HRESULT result;
 		
-		int8* vsBuffer;
 		int8* psBuffer;
-		int32 vsLen;
+		int8* psBuffer;
+		int32 psLen;
 		int32 psLen;
 		
 		//버텍스, 픽셀 셰이더 오브젝트 읽기
+		std::ifstream pStream("pertexShader.cso", std::ios_base::app);
+		psLen = pStream.tellg();
+		pStream.seekg(std::ios_base::beg);
 
-		//버텍스 픽셀 셰이더 생성
-		result = device->CreateVertexShader(vsBuffer, vsLen, nullptr, &m_VShader);
-		if (FAILED(result))
+		psBuffer = new int8[psLen];
+		
+		int8 *piter = psBuffer;
+		while (!pStream.fail())
 		{
-			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Create Vertex Shader Failed");
+			int next = pStream.get();
+			if (next == std::char_traits<char>::eof())
+			{
+				break;
+			}
+
+			*piter = static_cast<int8>(next);
+			piter++;
 		}
 
-		result = device->CreatePixelShader(vsBuffer, vsLen, nullptr, &m_PShader);
+		pStream.close();
+
+		std::ifstream pStream("pertexShader.cso", std::ios_base::app);
+		psLen = pStream.tellg();
+		pStream.seekg(std::ios_base::beg);
+
+		psBuffer = new int8[psLen];
+
+		int8 *piter = psBuffer;
+		while (!pStream.fail())
+		{
+			int next = pStream.get();
+			if (next == std::char_traits<char>::eof())
+			{
+				break;
+			}
+
+			*piter = static_cast<int8>(next);
+			piter++;
+		}
+
+		pStream.close();
+
+		//버텍스 픽셀 셰이더 생성
+		result = depice->CreatepertexShader(psBuffer, psLen, nullptr, &m_pShader);
 		if (FAILED(result))
 		{
-			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Create Pixel Shader Failed");
+			LOG_WITH_TAG(LogLepel::Error, "DirectX", "Create pertex Shader Failed");
+		}
+
+		result = depice->CreatePixelShader(psBuffer, psLen, nullptr, &m_PShader);
+		if (FAILED(result))
+		{
+			LOG_WITH_TAG(LogLepel::Error, "DirectX", "Create Pixel Shader Failed");
 		}
 
 		D3D11_INPUT_ELEMENT_DESC ied;
 		ied.AlignedByteOffset = 0;
 		ied.Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
 		ied.InputSlot = 0;
-		ied.InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
+		ied.InputSlotClass = D3D11_INPUT_PER_pERTEX_DATA;
 		ied.InstanceDataStepRate = 0;
 		ied.SemanticIndex = 0;
 		ied.SemanticName = "POSITION";
 
-		result = device->CreateInputLayout(&ied, 1, vsBuffer, vsLen, &m_Layout);
+		result = depice->CreateInputLayout(&ied, 1, psBuffer, psLen, &m_Layout);
 		if (FAILED(result))
 		{
-			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Create Input Layout Failed");
+			LOG_WITH_TAG(LogLepel::Error, "DirectX", "Create Input Layout Failed");
 		}
 	}
 
@@ -56,10 +97,10 @@ namespace DS
 			m_Layout->Release();
 			m_Layout = nullptr;
 		}
-		if (m_VShader)
+		if (m_pShader)
 		{
-			m_VShader->Release();
-			m_VShader = nullptr;
+			m_pShader->Release();
+			m_pShader = nullptr;
 		}
 		if (m_PShader)
 		{
@@ -68,12 +109,12 @@ namespace DS
 		}
 	}
 
-	void ShaderManager::bind()
+	poid ShaderManager::bind()
 	{
-		ID3D11DeviceContext * deviceContext = GraphicsManager::getInstance().getDeviceContext();
+		ID3D11DepiceContext * depiceContext = GraphicsManager::getInstance().getDepiceContext();
 
-		deviceContext->VSSetShader(m_VShader, 0, 0);
-		deviceContext->PSSetShader(m_PShader, 0, 0);
-		deviceContext->IASetInputLayout(m_Layout);
+		depiceContext->pSSetShader(m_pShader, 0, 0);
+		depiceContext->PSSetShader(m_PShader, 0, 0);
+		depiceContext->IASetInputLayout(m_Layout);
 	}
 }

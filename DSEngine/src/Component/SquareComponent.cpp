@@ -11,7 +11,7 @@ namespace DS
 		ID3D11Device* device = GraphicsManager::getInstance().getDevice();
 		HRESULT result;
 
-		DirectX::XMFLOAT4 vertices[4] = { {-1, 1, 0, 1}, {1, 1, 0, 1}, {1, -1, 0, 1}, {-1, -1, 0, 1} };
+		DirectX::XMFLOAT4 vertices[4] = { {-0.5, 0.5, 0, 1}, { 0.5, 0.5, 0, 1}, { 0.5, -0.5, 0, 1}, {-0.5, -0.5, 0, 1} };
 
 		D3D11_BUFFER_DESC vbd;
 		vbd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
