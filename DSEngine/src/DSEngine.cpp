@@ -1,4 +1,5 @@
 #include "DSEngine.h"
+#include "Graphics\ShaderManager.h"
 
 namespace DS
 {
@@ -11,12 +12,7 @@ namespace DS
 		m_SceneManager(nullptr),
 		m_GraphicsManager(nullptr)
 	{
-		m_InputManager = &InputManager::getInstance();
-		m_Window = &Window::getInstance();
-		m_SceneManager = &SceneManager::getInstance();
-		m_GraphicsManager = &GraphicsManager::getInstance();
-
-		m_Context.time = &TimeManager::getInstance();
+		
 	}
 
 	DSEngine::~DSEngine()
@@ -34,6 +30,8 @@ namespace DS
 
 		//½Ì±ÛÅÏ °´Ã¼ »ý¼º
 		Logger::createInstance();
+		Logger::getInstance().initialize(false, true);
+
 		SceneManager::createInstance();
 		Window::createInstance();
 		InputManager::createInstance();
@@ -41,9 +39,17 @@ namespace DS
 
 		m_Game = &game;
 
-		Logger::getInstance().initialize(false, true);
 		Window::getInstance().initialize(instanceHandle, windowSize);
 		GraphicsManager::getInstance().initialize(Window::getInstance().getHandle(), windowSize, false);
+
+		ShaderManager::createInstance();
+
+		m_InputManager = &InputManager::getInstance();
+		m_Window = &Window::getInstance();
+		m_SceneManager = &SceneManager::getInstance();
+		m_GraphicsManager = &GraphicsManager::getInstance();
+
+		m_Context.time = &TimeManager::getInstance();
 
 		//°ÔÀÓ °´Ã¼ ÃÊ±âÈ­
 		m_Game->initialize();

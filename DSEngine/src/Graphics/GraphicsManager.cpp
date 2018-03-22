@@ -1,4 +1,5 @@
 #include "GraphicsManager.h"
+#include "ShaderManager.h"
 #include <d3d11.h>
 
 namespace DS
@@ -12,11 +13,12 @@ namespace DS
 		m_DepthStencilBuffer(nullptr),
 		m_FeatureLevel(D3D_FEATURE_LEVEL_11_0)
 	{
-
+		
 	}
 
 	GraphicsManager::~GraphicsManager()
 	{
+		ShaderManager::destroyInstance();
 		if (m_SwapChain)
 		{
 			m_SwapChain->Release();
