@@ -5,6 +5,8 @@
 #include "Window\Window.h"
 #include "Input\InputManager.h"
 #include "Graphics\GraphicsManager.h"
+#include "Utils\Time\TimeManager.h"
+#include "Utils\FPS.h"
 #include "BaseGame.h"
 
 namespace DS
@@ -18,6 +20,9 @@ namespace DS
 
 		void run();
 
+		void update();
+		void draw();
+
 		void goodBye();
 
 	private:
@@ -28,6 +33,13 @@ namespace DS
 		BaseGame* m_Game;
 		bool m_IsInitialized;
 		bool m_IsRunning;
-		Context m_GameContext;
+
+		InputManager* m_InputManager;
+		Window* m_Window;
+		SceneManager* m_SceneManager;
+		GraphicsManager* m_GraphicsManager;
+		
+		Context m_Context;
+		FPS m_FPS;
 	};
 }
