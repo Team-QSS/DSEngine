@@ -36,6 +36,7 @@ namespace DS
 		Window::createInstance();
 		InputManager::createInstance();
 		GraphicsManager::createInstance();
+		TimeManager::createInstance();
 
 		m_Game = &game;
 

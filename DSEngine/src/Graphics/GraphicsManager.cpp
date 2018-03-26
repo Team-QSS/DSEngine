@@ -1,6 +1,7 @@
 #include "GraphicsManager.h"
 #include "ShaderManager.h"
 #include <d3d11.h>
+#include <d3d11shader.h>
 
 namespace DS
 {
@@ -107,6 +108,8 @@ namespace DS
 			backBuffer->Release();
 			backBuffer = nullptr;
 		}
+
+		
 
 		D3D11_TEXTURE2D_DESC dsd;
 		dsd.ArraySize = 1;

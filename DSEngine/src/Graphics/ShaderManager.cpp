@@ -22,26 +22,14 @@ namespace DS
 		try
 		{
 			//버텍스, 픽셀 셰이더 오브젝트 읽기
-			std::ifstream vStream("VertexShader.cso", std::ios_base::app);
-			std::streampos vEndPos = vStream.tellg();
-			vStream.seekg(std::ios_base::beg);
-			vsLen = static_cast<int32>(vEndPos - vStream.tellg());
+			std::ifstream vStream("VertexShader.cso", std::ios_base::binary);
+			vStream.seekg(0, std::ios_base::end);
+			vsLen = static_cast<int32>(vStream.tellg());
+			vStream.seekg(0, std::ios_base::beg);
 
 			vsBuffer = new int8[vsLen];
 
-			int8 *viter = vsBuffer;
-			while (!vStream.fail())
-			{
-				int next = vStream.get();
-				if (next == std::char_traits<char>::eof())
-				{
-					break;
-				}
-
-				*viter = static_cast<int8>(next);
-				viter++;
-			}
-
+			vStream.read(reinterpret_cast<char *>(vsBuffer), vsLen);
 			vStream.close();
 
 			std::ifstream pStream("PixelShader.cso", std::ios_base::app);
@@ -51,19 +39,8 @@ namespace DS
 
 			psBuffer = new int8[vsLen];
 
-			int8 *piter = psBuffer;
-			while (!pStream.fail())
-			{
-				int next = pStream.get();
-				if (next == std::char_traits<char>::eof())
-				{
-					break;
-				}
-
-				*piter = static_cast<int8>(next);
-				piter++;
-			}
-
+			
+			pStream.read(reinterpret_cast<char *>(psBuffer), psLen);
 			pStream.close();
 		}
 		catch (const std::ios_base::failure& e)
@@ -81,7 +58,7 @@ namespace DS
 			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Create vertex Shader Failed");
 		}
 
-		result = device->CreatePixelShader(vsBuffer, vsLen, nullptr, &m_PShader);
+		result = device->CreatePixelShader(psBuffer, psLen, nullptr, &m_PShader);
 		if (FAILED(result))
 		{
 			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Create Pixel Shader Failed");
@@ -99,7 +76,7 @@ namespace DS
 		result = device->CreateInputLayout(&ied, 1, vsBuffer, vsLen, &m_Layout);
 		if (FAILED(result))
 		{
-			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Create Invut Layout Failed");
+			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Create Input Layout Failed");
 		}
 	}
 
