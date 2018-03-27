@@ -16,7 +16,7 @@ namespace DS
 	public:
 		friend Singleton<DSEngine>;
 
-		void initialize(BaseGame& game, HINSTANCE instanceHandle, DirectX::XMINT2 windowSize, Scene& initialScene, tstring sceneName);
+		void initialize(BaseGame& game, HINSTANCE instanceHandle, DirectX::XMINT2 windowSize);
 
 		void run();
 

@@ -20,7 +20,7 @@ namespace DS
 		
 	}
 
-	void DSEngine::initialize(BaseGame& game, HINSTANCE instanceHandle, DirectX::XMINT2 windowSize, Scene& initialScene, tstring sceneName)
+	void DSEngine::initialize(BaseGame& game, HINSTANCE instanceHandle, DirectX::XMINT2 windowSize)
 	{
 		if (m_IsInitialized) //중복 초기화 검사
 		{
@@ -55,9 +55,6 @@ namespace DS
 		//게임 객체 초기화
 		m_Game->initialize();
 
-		SceneManager::getInstance().addScene(sceneName, initialScene);
-		SceneManager::getInstance().setCurrentScene(sceneName);
-
 		m_IsRunning = true;
 	}
 
@@ -72,6 +69,7 @@ namespace DS
 
 	void DSEngine::update()
 	{
+		m_FPS.update(m_Context);
 		m_InputManager->update();
 		m_Window->peekMessage();
 		m_Game->update(m_Context);
@@ -80,10 +78,10 @@ namespace DS
 
 	void DSEngine::draw()
 	{
+		m_GraphicsManager->beginDraw();
 		m_Game->draw();
-		m_GraphicsManager->draw();
 		m_SceneManager->getCurrentScene().draw();
-		m_FPS.update(m_Context);
+		m_GraphicsManager->endDraw();
 	}
 
 

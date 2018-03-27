@@ -17,7 +17,8 @@ namespace DS
 		ID3D11Device * getDevice();
 		ID3D11DeviceContext * getDeviceContext();
 
-		void draw();
+		void beginDraw();
+		void endDraw();
 	private:
 		GraphicsManager();
 		~GraphicsManager();

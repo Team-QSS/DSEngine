@@ -145,6 +145,7 @@ namespace DS
 		vp.Width = (float32) resolution.x;
 
 		m_DeviceContext->RSSetViewports(1, &vp);
+		m_DeviceContext->OMSetRenderTargets(1, &m_RenderTargetView, m_DepthStencilView);
 	}
 
 	ID3D11Device * GraphicsManager::getDevice()
@@ -157,12 +158,15 @@ namespace DS
 		return m_DeviceContext;
 	}
 
-	void GraphicsManager::draw()
+	void GraphicsManager::beginDraw()
 	{
 		float bg[4] = { 0.0f, 1.0f, 1.0f, 0.0f };
 		m_DeviceContext->ClearRenderTargetView(m_RenderTargetView, bg);
 		m_DeviceContext->ClearDepthStencilView(m_DepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+	}
 
+	void GraphicsManager::endDraw()
+	{
 		m_SwapChain->Present(1, 0);
 	}
 }

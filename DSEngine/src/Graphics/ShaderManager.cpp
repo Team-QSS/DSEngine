@@ -32,12 +32,12 @@ namespace DS
 			vStream.read(reinterpret_cast<char *>(vsBuffer), vsLen);
 			vStream.close();
 
-			std::ifstream pStream("PixelShader.cso", std::ios_base::app);
-			std::streampos pEndPos = pStream.tellg();
-			pStream.seekg(std::ios_base::beg);
-			psLen = static_cast<int32>(pEndPos - pStream.tellg());
+			std::ifstream pStream("PixelShader.cso", std::ios_base::binary);
+			pStream.seekg(0, std::ios_base::end);
+			psLen = static_cast<int32>(pStream.tellg());
+			pStream.seekg(0, std::ios_base::beg);
 
-			psBuffer = new int8[vsLen];
+			psBuffer = new int8[psLen];
 
 			
 			pStream.read(reinterpret_cast<char *>(psBuffer), psLen);
@@ -78,6 +78,11 @@ namespace DS
 		{
 			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Create Input Layout Failed");
 		}
+
+		delete[] vsBuffer;
+		delete[] psBuffer;
+
+		this->bind();
 	}
 
 	ShaderManager::~ShaderManager()
