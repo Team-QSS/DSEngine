@@ -143,6 +143,7 @@ namespace DS
 
 	float64 Time::getNanoSeconds() const
 	{
+		//여기서 오류가 날 리가 없어요 - Splash
 		return float64(std::chrono::duration_cast<std::chrono::nanoseconds>(m_Duration).count());
 	}
 }
