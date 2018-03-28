@@ -70,8 +70,8 @@ namespace DS
 		sd.BufferCount = 2;
 		sd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 		sd.BufferDesc.Height = resolution.y;
-		sd.BufferDesc.RefreshRate.Denominator = 60;
-		sd.BufferDesc.RefreshRate.Numerator = 1;
+		sd.BufferDesc.RefreshRate.Denominator = 1;
+		sd.BufferDesc.RefreshRate.Numerator = 60;
 		sd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;
 		sd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
 		sd.BufferDesc.Width = resolution.x;
@@ -101,15 +101,7 @@ namespace DS
 		if (FAILED(result))
 		{
 			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Creating RenderTargetView Failed");
-		}
-
-		if (backBuffer)
-		{
-			backBuffer->Release();
-			backBuffer = nullptr;
-		}
-
-		
+		}	
 
 		D3D11_TEXTURE2D_DESC dsd;
 		dsd.ArraySize = 1;
@@ -163,6 +155,8 @@ namespace DS
 		float bg[4] = { 0.0f, 1.0f, 1.0f, 0.0f };
 		m_DeviceContext->ClearRenderTargetView(m_RenderTargetView, bg);
 		m_DeviceContext->ClearDepthStencilView(m_DepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+
+		ShaderManager::getInstance().bind();
 	}
 
 	void GraphicsManager::endDraw()

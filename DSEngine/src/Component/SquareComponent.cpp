@@ -11,7 +11,13 @@ namespace DS
 		ID3D11Device* device = GraphicsManager::getInstance().getDevice();
 		HRESULT result;
 
-		DirectX::XMFLOAT4 vertices[4] = { {-0.5, 0.5, 0, 0}, { 0.5, 0.5, 0, 0}, { 0.5, -0.5, 0, 0}, {-0.5, -0.5, 0, 0} };
+		DirectX::XMFLOAT4 vertices[4] = 
+		{ 
+			{-0.5f, 0.5f, 0.0f, 1.0f }, 
+			{ 0.5f, 0.5f, 0.0f, 1.0f },
+			{ 0.5f, -0.5f, 0.0f, 1.0f },
+			{-0.5f, -0.5f, 0.0f, 1.0f }
+		};
 
 		D3D11_BUFFER_DESC vbd;
 		vbd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
@@ -81,7 +87,6 @@ namespace DS
 
 		UINT stride = sizeof(DirectX::XMFLOAT4);
 		UINT offset = 0;
-
 		
 		deviceContext->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
 		deviceContext->IASetIndexBuffer(m_IndexBuffer, DXGI_FORMAT_R32_UINT, 0);
