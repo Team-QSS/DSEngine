@@ -11,7 +11,7 @@ namespace DS
 //		m_IsFullScreen(false),
 //		m_CanGoFullScreen(false)
 	{
-		
+
 	}
 
 	Window::~Window()
@@ -121,12 +121,14 @@ namespace DS
 			case WM_EXITMENULOOP:
 				Window::getInstance().setActive(true);
 				break;
-			case WM_KEYDOWN:
-				//Input 구현 후 상호작용
-			case WM_KEYUP:
-				//Input 구현 후 상호작용
-			case WM_KEYLAST:
-				//Input 구현 후 상호작용
+			case WM_LBUTTONDOWN:
+				InputManager::getInstance().setMouseState(MouseButton::Left, true);
+			case WM_LBUTTONUP:
+				InputManager::getInstance().setMouseState(MouseButton::Left, false);
+			case WM_RBUTTONDOWN:
+				InputManager::getInstance().setMouseState(MouseButton::Right, true);
+			case WM_RBUTTONUP:
+				InputManager::getInstance().setMouseState(MouseButton::Right, false);
 			case WM_SYSCOMMAND:
 				//SC_KEYMENU == (wParam & 0xFFF0)
 
