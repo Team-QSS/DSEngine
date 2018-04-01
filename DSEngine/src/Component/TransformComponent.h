@@ -16,10 +16,10 @@ namespace DS
 		void stretch(const DirectX::XMFLOAT2& offset);
 		void stretch(const DirectX::XMFLOAT2&& offset);
 
-		DirectX::XMFLOAT2 m_Position;
-		DirectX::XMFLOAT2 m_Size;
+		DirectX::XMFLOAT2 position;
+		DirectX::XMFLOAT2 size;
 
-		int m_Depth;
-		float m_Angle;
+		int depth;
+		float angle;
 	};
 }

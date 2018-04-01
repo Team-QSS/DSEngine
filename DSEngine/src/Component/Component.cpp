@@ -2,7 +2,8 @@
 
 namespace DS
 {
-	Component::Component()
+	Component::Component() :
+		m_Parent(nullptr)
 	{
 
 	}
@@ -10,6 +11,11 @@ namespace DS
 	Component::~Component()
 	{
 
+	}
+
+	Object& Component::getParent() const
+	{
+		return *(m_Parent);
 	}
 
 	void Component::update(Context& context)
@@ -20,5 +26,10 @@ namespace DS
 	void Component::draw()
 	{
 		onDraw();
+	}
+
+	void Component::setParent(Object* obj)
+	{
+		m_Parent = obj;
 	}
 }

@@ -101,6 +101,7 @@ namespace DS
 		}
 
 		m_Components.insert(make_pair(typeid(component).name(), &component));
+		component.setParent(this);
 	}
 
 	void Object::removeComponent(Component& component)
@@ -112,6 +113,7 @@ namespace DS
 		}
 
 		m_GarbageCollector.push_back(Garbage(GarbageType::ComponentType, static_cast<void*>(&component)));
+		component.setParent(nullptr);
 	}
 
 	TransformComponent& Object::getTransformComponent()

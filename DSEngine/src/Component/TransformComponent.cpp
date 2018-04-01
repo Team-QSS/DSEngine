@@ -3,35 +3,35 @@
 namespace DS
 {
 	TransformComponent::TransformComponent() :
-		m_Position({ 0, 0 }),
-		m_Size({ 1, 1 }),
-		m_Angle(0),
-		m_Depth(0)
+		position({ 0, 0 }),
+		size({ 1, 1 }),
+		angle(0),
+		depth(0)
 	{
 
 	}
 
 	void TransformComponent::move(const DirectX::XMFLOAT2& offset)
 	{
-		m_Position.x += offset.x;
-		m_Position.y += offset.y;
+		position.x += offset.x;
+		position.y += offset.y;
 	}
 
 	void TransformComponent::move(const DirectX::XMFLOAT2&& offset)
 	{
-		m_Position.x += offset.x;
-		m_Position.y += offset.y;
+		position.x += offset.x;
+		position.y += offset.y;
 	}
 
 	void TransformComponent::stretch(const DirectX::XMFLOAT2& offset)
 	{
-		m_Size.x *= offset.x;
-		m_Size.y *= offset.y;
+		size.x *= offset.x;
+		size.y *= offset.y;
 	}
 
 	void TransformComponent::stretch(const DirectX::XMFLOAT2&& offset)
 	{
-		m_Size.x *= offset.x;
-		m_Size.y *= offset.y;
+		size.x *= offset.x;
+		size.y *= offset.y;
 	}
 }

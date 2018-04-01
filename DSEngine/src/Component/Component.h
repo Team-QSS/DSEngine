@@ -11,6 +11,8 @@ namespace DS
 		Component();
 		virtual ~Component();
 
+		Object& getParent() const;
+
 	protected:
 		virtual void onUpdate(Context& context) {};
 		virtual void onDraw() {};
@@ -19,7 +21,10 @@ namespace DS
 		void update(Context& context);
 		void draw();
 
-		friend void Object::update(Context& context);
-		friend void Object::draw();
+		void setParent(Object* obj);
+
+		Object* m_Parent;
+
+		friend Object;
 	};
 }

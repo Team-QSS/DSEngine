@@ -23,6 +23,8 @@ namespace DS
 
 		Scene& getScene() const;
 
+		TransformComponent& getTransformComponent();
+
 	protected:
 		virtual void onUpdate(Context& context) = 0;
 		virtual void onDraw() {};
@@ -35,7 +37,7 @@ namespace DS
 		T* getComponent();
 		template <typename T>
 		bool isComponentExist();
-		TransformComponent& getTransformComponent();
+		
 
 		void addChild(Object& object);
 		void removeChild(Object& object);

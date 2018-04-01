@@ -4,14 +4,24 @@
 #include "src\DSEngine.h"
 #include "src\Object\Object.h"
 #include "src\Component\SquareComponent.h"
+#include "src\Component\TransformComponent.h"
 
 using namespace std;
 class TestObject : public DS::Object
 {
 public:
-	TestObject() { addComponent(*(new DS::SquareComponent())); }
+	TestObject() { addComponent(*(new DS::SquareComponent({ 1, 1 }))); }
 protected:
-	virtual void onUpdate(DS::Context& context) override {}
+	virtual void onUpdate(DS::Context& context) override 
+	{
+		DS::InputManager& input = DS::InputManager::getInstance();
+
+		if (input.isKeyDown(VK_SPACE))
+		{
+			getTransformComponent().angle += 1;
+			getTransformComponent().stretch({ 1.1f, 1.1f });
+		}
+	}
 };
 
 class TestScene : public DS::Scene
