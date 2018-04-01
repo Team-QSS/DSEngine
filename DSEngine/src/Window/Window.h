@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include <DirectXMath.h>
 #include "../Utils/Utils.h"
+#include "../Input/InputManager.h"
 
 namespace DS
 {
