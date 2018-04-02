@@ -157,8 +157,7 @@ namespace DS
 			getParent().getTransformComponent().position.y, 
 			static_cast<float>(getParent().getTransformComponent().depth));
 
-		DirectX::XMMATRIX rotate = DirectX::XMMatrixRotationAxis(
-			{ 0.0, 0.0f, 1.0f, 0.0f }, 
+		DirectX::XMMATRIX rotate = DirectX::XMMatrixRotationZ(
 			getParent().getTransformComponent().angle);
 
 		DirectX::XMMATRIX scale = DirectX::XMMatrixScaling(

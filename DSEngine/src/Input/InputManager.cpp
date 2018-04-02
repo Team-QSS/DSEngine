@@ -49,14 +49,23 @@ namespace DS
 		bool temp;
 
 		//현재 상태를 이전 프레임의 상태로 변환
-		temp = m_CurMouseState[0];
-		m_CurMouseState[0] = m_PreMouseState[0];
-		m_PreMouseState[0] = temp;
-
-		temp = m_CurMouseState[1];
-		m_CurMouseState[1] = m_PreMouseState[1];
-		m_PreMouseState[1] = temp;
+		m_PreKeyState[0] = m_CurMouseState[0];
+		m_PreKeyState[1] = m_CurMouseState[1];
 	}
+
+	void InputManager::setMouseState(MouseButton button, bool isDown)
+	{
+		switch (button)
+		{
+		case MouseButton::Left:
+			m_CurMouseState[0] = isDown;
+			break;
+		case MouseButton::Right:
+			m_CurMouseState[1] = isDown;
+			break;
+		}
+	}
+
 
 	bool InputManager::isKeyDown(Key key) const
 	{
@@ -66,7 +75,7 @@ namespace DS
 			return false;
 		}
 
-		return m_CurKeyState[key];
+		return m_CurKeyState[key] & 0xf0;
 	}
 
 	bool InputManager::isKeyPressed(Key key) const
@@ -77,7 +86,7 @@ namespace DS
 			return false;
 		}
 
-		if (!m_PreKeyState[key] && m_CurKeyState[key])
+		if (!(m_PreKeyState[key] & 0xf0) && (m_CurKeyState[key] & 0xf0))
 		{
 			return true;
 		}
@@ -95,7 +104,7 @@ namespace DS
 			return false;
 		}
 
-		if (m_PreKeyState[key] && !m_CurKeyState[key])
+		if ((m_PreKeyState[key] & 0xf0) && !(m_CurKeyState[key] & 0xf0))
 		{
 			return true;
 		}

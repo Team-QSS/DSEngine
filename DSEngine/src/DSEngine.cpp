@@ -60,8 +60,11 @@ namespace DS
 
 	void DSEngine::run()
 	{
+		m_Context.time->startMonitoring();
 		while (m_IsRunning)
 		{
+			m_Context.time->stopMonitoring();
+			m_Context.time->startMonitoring();
 			DSEngine::update();
 			DSEngine::draw();
 		}
@@ -74,13 +77,20 @@ namespace DS
 		m_Window->peekMessage();
 		m_Game->update(m_Context);
 		m_SceneManager->getCurrentScene().update(m_Context);
+
+		if (m_Window->shouldClose())
+		{
+			m_IsRunning = false;
+		}
 	}
 
 	void DSEngine::draw()
 	{
 		m_GraphicsManager->beginDraw();
+
 		m_Game->draw();
 		m_SceneManager->getCurrentScene().draw();
+
 		m_GraphicsManager->endDraw();
 	}
 

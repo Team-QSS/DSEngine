@@ -18,8 +18,7 @@ protected:
 
 		if (input.isKeyDown(VK_SPACE))
 		{
-			getTransformComponent().angle += 1;
-			getTransformComponent().stretch({ 1.1f, 1.1f });
+			getTransformComponent().angle += static_cast<float32>(180 * context.time->deltaTime().getSeconds());
 		}
 	}
 };
