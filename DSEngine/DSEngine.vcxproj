@@ -164,6 +164,7 @@
     <ClInclude Include="src\Utils\Time\TimerManager.h" />
     <ClInclude Include="src\Utils\Utils.h" />
     <ClInclude Include="src\Window\Window.h" />
+    <ClInclude Include="Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Object\Object.inl" />

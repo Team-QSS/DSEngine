@@ -212,6 +212,9 @@
     <ClInclude Include="src\Component\SquareComponent.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>헤더 파일\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\Singleton.inl">
