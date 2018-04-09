@@ -125,6 +125,9 @@
     <ClCompile Include="src\Graphics\ShaderManager.cpp" />
     <ClCompile Include="src\Input\InputManager.cpp" />
     <ClCompile Include="src\Object\Object.cpp" />
+    <ClCompile Include="src\Resource\Resource.cpp" />
+    <ClCompile Include="src\Resource\ResourceManager.cpp" />
+    <ClCompile Include="src\Resource\ResourcePath.cpp" />
     <ClCompile Include="src\Scene\Scene.cpp" />
     <ClCompile Include="src\Scene\SceneManager.cpp" />
     <ClCompile Include="src\Utils\FPS.cpp" />
@@ -148,6 +151,10 @@
     <ClInclude Include="src\Graphics\ShaderManager.h" />
     <ClInclude Include="src\Input\InputManager.h" />
     <ClInclude Include="src\Object\Object.h" />
+    <ClInclude Include="src\Resource\Resource.h" />
+    <ClInclude Include="src\Resource\ResourceFactory.h" />
+    <ClInclude Include="src\Resource\ResourceManager.h" />
+    <ClInclude Include="src\Resource\ResourcePath.h" />
     <ClInclude Include="src\Scene\Scene.h" />
     <ClInclude Include="src\Scene\SceneManager.h" />
     <ClInclude Include="src\STB\stb_image.h" />
@@ -167,6 +174,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Object\Object.inl" />
+    <None Include="src\Resource\ResourceFactory.inl" />
+    <None Include="src\Resource\ResourceManager.inl" />
     <None Include="src\Utils\Singleton.inl" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +185,9 @@
     <FxCompile Include="shader\VertexShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resource.json 규칙.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

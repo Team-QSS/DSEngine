@@ -19,7 +19,7 @@ namespace DS
 		DirectX::XMFLOAT2 position;
 		DirectX::XMFLOAT2 size;
 
-		int depth;
-		float angle;
+		int32 depth;
+		float32 angle;
 	};
 }

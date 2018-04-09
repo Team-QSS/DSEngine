@@ -67,6 +67,12 @@
     <Filter Include="셰이더 파일">
       <UniqueIdentifier>{7cb63eba-c355-4910-904e-aa26c4ba55dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Resource">
+      <UniqueIdentifier>{379d0b7f-6db0-4f57-ae73-3c0a16d0565a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Resource">
+      <UniqueIdentifier>{a8e5779e-cda7-43cd-ad68-279fb11f6812}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -131,6 +137,15 @@
     </ClCompile>
     <ClCompile Include="src\Scene\SceneManager.cpp">
       <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Resource\ResourceManager.cpp">
+      <Filter>소스 파일\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Resource\Resource.cpp">
+      <Filter>소스 파일\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Resource\ResourcePath.cpp">
+      <Filter>소스 파일\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +227,18 @@
     <ClInclude Include="src\Component\SquareComponent.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
+    <ClInclude Include="src\Resource\ResourceManager.h">
+      <Filter>헤더 파일\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Resource\Resource.h">
+      <Filter>헤더 파일\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Resource\ResourceFactory.h">
+      <Filter>헤더 파일\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Resource\ResourcePath.h">
+      <Filter>헤더 파일\Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\Singleton.inl">
@@ -219,6 +246,12 @@
     </None>
     <None Include="src\Object\Object.inl">
       <Filter>소스 파일\Object</Filter>
+    </None>
+    <None Include="src\Resource\ResourceFactory.inl">
+      <Filter>소스 파일\Resource</Filter>
+    </None>
+    <None Include="src\Resource\ResourceManager.inl">
+      <Filter>소스 파일\Resource</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -228,5 +261,10 @@
     <FxCompile Include="shader\VertexShader.hlsl">
       <Filter>셰이더 파일</Filter>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resource.json 규칙.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
   </ItemGroup>
 </Project>
