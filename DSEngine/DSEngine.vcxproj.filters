@@ -239,6 +239,9 @@
     <ClInclude Include="src\Resource\ResourcePath.h">
       <Filter>헤더 파일\Resource</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>헤더 파일\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\Singleton.inl">
