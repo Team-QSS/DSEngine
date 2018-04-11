@@ -3,6 +3,7 @@
 #include <d3d11.h>
 #include <dxgi.h>
 #include <DirectXMath.h>
+#include <d3d11shader.h>
 #pragma comment(lib, "d3d11.lib")
 
 namespace DS
@@ -30,5 +31,8 @@ namespace DS
 		ID3D11RenderTargetView * m_RenderTargetView;
 		ID3D11Texture2D * m_DepthStencilBuffer;
 		ID3D11DepthStencilView * m_DepthStencilView;
+
+		DirectX::XMFLOAT4X4 m_OrthoMatrix;
+		ID3D11Buffer* m_MatrixBuffer;
 	};
 }
