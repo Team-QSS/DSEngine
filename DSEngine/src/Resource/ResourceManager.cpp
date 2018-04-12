@@ -1,5 +1,7 @@
 #include "ResourceManager.h"
 #include <iostream>
+#include <algorithm>
+#include <cctype>
 
 namespace DS
 {
@@ -17,7 +19,9 @@ namespace DS
 
 		tstring str(buffer);
 
-		parseJson(m_Paths, str);
+		parseRes(m_Paths, str);
+
+		delete[] buffer;
 	}
 
 	ResourceManager::~ResourceManager()
@@ -25,8 +29,25 @@ namespace DS
 
 	}
 
-	void ResourceManager::parseJson(ResourcePath& paths, tstring dataString)
+	void ResourceManager::parseRes(ResourcePath& paths, tstring dataString)
 	{
-		
+		tstringstream stream(dataString);
+
+		char* buffer = new char[dataString.length() + 1];
+
+		while (!stream.eof())
+		{
+			stream.getline(buffer, dataString.length());
+			tstring line(buffer);
+
+			size colPos = line.find(':');
+			if (colPos != tstring::npos)
+			{
+				tstring name = line.substr(0, colPos);
+				trim(name);
+
+				
+			}
+		}
 	}
 }

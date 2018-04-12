@@ -1,6 +1,7 @@
 #pragma once
 #include "../Defines.h"
 #include <map>
+#include <vector>
 
 namespace DS
 {
@@ -15,8 +16,9 @@ namespace DS
 		ResourcePath() = default;
 		~ResourcePath() = default;
 
-		tstring m_Path;
+		tstring m_Extension;
 
-		std::map<tstring, ResourcePath> m_Paths;
+		std::vector<tstring> m_Path;
+		std::map<tstring, ResourcePath *> m_Paths;
 	};
 }

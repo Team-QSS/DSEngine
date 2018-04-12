@@ -9,4 +9,6 @@
 namespace DS
 {
 	int terminate(int exitCode);
+
+	tstring& trim(tstring& str);
 }

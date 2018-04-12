@@ -266,7 +266,7 @@
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Resource.json 규칙.txt">
+    <Text Include="Resource.res규칙.txt">
       <Filter>리소스 파일</Filter>
     </Text>
   </ItemGroup>

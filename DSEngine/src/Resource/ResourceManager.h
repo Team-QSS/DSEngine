@@ -21,12 +21,12 @@ namespace DS
 		void addResourceType(tstring extension, Factory& factory);
 
 		bool loadResource(tstring name);
-		bool loadGroup(tstring name);
+		bool loadSet(tstring name);
 
 		void unloadResource(tstring name);
-		void unloadGroup(tstring name);
+		void unloadSet(tstring name);
 
-		void moveGroup(tstring unloadingGroup, tstring loadingGroup);
+		void moveSet(tstring unloadingSet, tstring loadingSet);
 
 		Resource& getResource(tstring name);
 
@@ -34,7 +34,7 @@ namespace DS
 		ResourceManager();
 		~ResourceManager();
 
-		void parseJson(ResourcePath& paths, tstring dataString);
+		void parseRes(ResourcePath& paths, tstring dataString);
 	
 		std::map<tstring, Resource *> m_Resources;
 		std::map<tstring, Factory *> m_Factories;

@@ -1,9 +1,10 @@
+#pragma once
 #include "ResourceFactory.h"
 
 namespace DS
 {
 	template<typename T>
-	void * ResourceFactory::alloc(size_t n = 1)
+	void * ResourceFactory<T>::alloc(size_t n)
 	{
 		if (n == 1)
 		{
@@ -16,7 +17,7 @@ namespace DS
 	}
 
 	template<typename T>
-	void ResourceFactory::free(void * resource, size_t n = 1)
+	void ResourceFactory<T>::free(void * resource, size_t n)
 	{
 		if (n == 1)
 		{

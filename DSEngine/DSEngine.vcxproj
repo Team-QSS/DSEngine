@@ -188,7 +188,7 @@
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Resource.json 규칙.txt" />
+    <Text Include="Resource.res규칙.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
