@@ -1,7 +1,6 @@
 #include "GraphicsManager.h"
 #include "ShaderManager.h"
 #include <d3d11.h>
-#include <d3d11shader.h>
 
 namespace DS
 {
@@ -12,7 +11,8 @@ namespace DS
 		m_RenderTargetView(nullptr),
 		m_DepthStencilView(nullptr),
 		m_DepthStencilBuffer(nullptr),
-		m_FeatureLevel(D3D_FEATURE_LEVEL_11_0)
+		m_FeatureLevel(D3D_FEATURE_LEVEL_11_0),
+		m_MatrixBuffer(nullptr)
 	{
 		
 	}
@@ -138,6 +138,24 @@ namespace DS
 
 		m_DeviceContext->RSSetViewports(1, &vp);
 		m_DeviceContext->OMSetRenderTargets(1, &m_RenderTargetView, m_DepthStencilView);
+
+
+		DirectX::XMMATRIX ortho = DirectX::XMMatrixOrthographicLH(1920.0f, 1080.f, 0.0f, 100.0f);
+
+		
+
+		D3D11_BUFFER_DESC matrixBufferDesc;
+		matrixBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+		matrixBufferDesc.ByteWidth = sizeof(DirectX::XMMATRIX);
+		matrixBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+		matrixBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+		matrixBufferDesc.MiscFlags = 0;
+		matrixBufferDesc.StructureByteStride = 0;
+
+		result = m_Device->CreateBuffer(&matrixBufferDesc, nullptr, &m_MatrixBuffer);
+
+
+		XMStoreFloat4x4(&m_OrthoMatrix, ortho);
 	}
 
 	ID3D11Device * GraphicsManager::getDevice()
@@ -152,6 +170,25 @@ namespace DS
 
 	void GraphicsManager::beginDraw()
 	{
+		DirectX::XMMATRIX ortho = DirectX::XMLoadFloat4x4(&m_OrthoMatrix);
+		
+		D3D11_MAPPED_SUBRESOURCE mappedResource;
+		DirectX::XMMATRIX* dataPtr;
+
+		HRESULT result;
+		result = m_DeviceContext->Map(m_MatrixBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+		if (FAILED(result))
+		{
+			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Draw Failed");
+		}
+		dataPtr = (DirectX::XMMATRIX*)mappedResource.pData;
+
+		dataPtr = &ortho;
+
+		m_DeviceContext->Unmap(m_MatrixBuffer, 0);
+		m_DeviceContext->VSSetConstantBuffers(1, 1, &m_MatrixBuffer);
+		
+
 		float bg[4] = { 0.0f, 1.0f, 1.0f, 0.0f };
 		m_DeviceContext->ClearRenderTargetView(m_RenderTargetView, bg);
 		m_DeviceContext->ClearDepthStencilView(m_DepthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
