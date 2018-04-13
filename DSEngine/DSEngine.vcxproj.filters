@@ -144,9 +144,6 @@
     <ClCompile Include="src\Resource\Resource.cpp">
       <Filter>소스 파일\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="src\Resource\ResourcePath.cpp">
-      <Filter>소스 파일\Resource</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Utils\Logger.h">
@@ -234,9 +231,6 @@
       <Filter>헤더 파일\Resource</Filter>
     </ClInclude>
     <ClInclude Include="src\Resource\ResourceFactory.h">
-      <Filter>헤더 파일\Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Resource\ResourcePath.h">
       <Filter>헤더 파일\Resource</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">

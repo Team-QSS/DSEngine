@@ -34,11 +34,12 @@ namespace DS
 		ResourceManager();
 		~ResourceManager();
 
-		void parseRes(ResourcePath& paths, tstring dataString);
+		void parseRes(tstring dataString);
+		void insertPath(tstring& rawName, tstring& rawPath, std::map<tstring, tstring> & val);
 	
 		std::map<tstring, Resource *> m_Resources;
 		std::map<tstring, Factory *> m_Factories;
-		ResourcePath m_Paths;
+		std::map<tstring, tstring> m_Paths;
 	};
 }
 
