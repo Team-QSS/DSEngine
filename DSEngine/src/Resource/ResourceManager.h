@@ -4,7 +4,6 @@
 #include <functional>
 #include "Resource.h"
 #include "ResourceFactory.h"
-#include "ResourcePath.h"
 
 namespace DS
 {

@@ -6,6 +6,7 @@
 #include "Input\InputManager.h"
 #include "Graphics\GraphicsManager.h"
 #include "Utils\Time\TimeManager.h"
+#include "Resource\ResourceManager.h"
 #include "Utils\FPS.h"
 #include "BaseGame.h"
 

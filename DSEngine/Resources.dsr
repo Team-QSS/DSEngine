@@ -1,0 +1,3 @@
+name1: "testpath"
+name2: "testpath2"
+name<3|5>: "testpath<3|5>"

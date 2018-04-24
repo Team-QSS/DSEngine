@@ -250,6 +250,7 @@
     <None Include="src\Resource\ResourceManager.inl">
       <Filter>소스 파일\Resource</Filter>
     </None>
+    <None Include="Resources.dsr" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="shader\PixelShader.hlsl">

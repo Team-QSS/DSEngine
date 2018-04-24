@@ -45,6 +45,8 @@ namespace DS
 
 		ShaderManager::createInstance();
 
+		ResourceManager::createInstance();
+
 		m_InputManager = &InputManager::getInstance();
 		m_Window = &Window::getInstance();
 		m_SceneManager = &SceneManager::getInstance();
