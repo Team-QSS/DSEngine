@@ -4,16 +4,9 @@
 namespace DS
 {
 	template<typename T>
-	void * ResourceFactory<T>::alloc(size_t n)
+	void * ResourceFactory<T>::alloc(int8 * buffer)
 	{
-		if (n == 1)
-		{
-			return new T();
-		}
-		else
-		{
-			return new T[n];
-		}
+		return new T(buffer);
 	}
 
 	template<typename T>

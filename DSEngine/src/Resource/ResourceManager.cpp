@@ -23,11 +23,6 @@ namespace DS
 		parseRes(str);
 
 		delete[] buffer;
-
-		for (auto const & it : m_Paths)
-		{
-			LOG(LogLevel::Debug, it.first + ": " + it.second);
-		}
 	}
 
 	ResourceManager::~ResourceManager()
@@ -147,5 +142,57 @@ namespace DS
 					val);
 			}
 		}
+	}
+
+	bool ResourceManager::loadResource(tstring name)
+	{
+		if (m_Paths.count(name) < 1)
+		{
+			LOG(LogLevel::Warning, "없는 이름의 리소스 로드 시도");
+			return false;
+		}
+
+		if (m_Resources.count(name) > 0)
+		{
+			LOG(LogLevel::Warning, "이미 로드된 리소스 로드 시도");
+			return false;
+		}
+
+		tstring path = m_Paths[name];
+
+		size dotPos = path.find_last_of('.');
+		if (dotPos == tstring::npos)
+		{
+			LOG(LogLevel::Error, "리소스 파일의 확장자 없음");
+			return false;
+		}
+
+		tstring extension = path.substr(dotPos + 1, tstring::npos);
+
+		std::ifstream stream(path, std::ios_base::binary);
+		stream.seekg(0, std::ios_base::end);
+		size len = static_cast<size>(stream.tellg());
+		stream.seekg(0, std::ios_base::beg);
+
+		int8 * buffer = new int8[len];
+
+		stream.read(reinterpret_cast<char *>(buffer), len);
+		stream.close();
+
+		Resource * resource = reinterpret_cast<Resource *>(m_Factories[extension]->alloc(buffer));
+		resource->m_Extension = extension;
+
+		m_Resources[name] = resource;
+
+		delete[] buffer;
+	}
+
+	void ResourceManager::unloadResource(tstring name)
+	{
+		Resource * resource = m_Resources[name];
+
+		m_Factories[resource->m_Extension]->free(resource);
+
+		m_Resources.erase(name);
 	}
 }

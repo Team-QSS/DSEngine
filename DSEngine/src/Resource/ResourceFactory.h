@@ -7,7 +7,7 @@ namespace DS
 	class Factory
 	{
 	public:
-		virtual void * alloc(size_t n = 1) = 0;
+		virtual void * alloc(int8 * buffer) = 0;
 		virtual void free(void * resource, size_t n = 1) = 0;
 	};
 
@@ -16,7 +16,8 @@ namespace DS
 	{
 	public:
 		friend Singleton<ResourceFactory<T>>;
-		virtual void * alloc(size_t n) override;
+		virtual void * alloc(int8 * buffer) override;
+		virtual void ** alloc(int8 ** buffer, size n) override;
 		virtual void free(void * resource, size_t n) override;
 
 	private:
