@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cctype>
 
+
 namespace DS
 {
 	ResourceManager::ResourceManager()
@@ -42,7 +43,7 @@ namespace DS
 			stream.getline(buffer, dataString.length());
 			tstring line(buffer);
 
-			size commentPos = line.find("//");
+			tsize commentPos = line.find("//");
 			if (commentPos != tstring::npos)
 			{
 				line.replace(commentPos, tstring::npos, ""); //주석 삭제
@@ -51,7 +52,7 @@ namespace DS
 			commentPos = line.find("/*");/* 여러 줄 주석 삭제 */
 			if (commentPos != tstring::npos)
 			{
-				size commentEndPos = line.find("*/", commentPos);
+				tsize commentEndPos = line.find("*/", commentPos);
 				if (commentEndPos != tstring::npos)
 				{
 					line.replace(commentPos, commentEndPos - commentPos + 2, "");
@@ -68,7 +69,7 @@ namespace DS
 				}
 			}
 
-			size colPos = line.find(':');
+			tsize colPos = line.find(':');
 			if (colPos != tstring::npos)
 			{
 				tstring name = line.substr(0, colPos);
@@ -98,8 +99,8 @@ namespace DS
 		{
 			while (tstring::npos != path.find_first_of('<'))
 			{
-				size start = path.find_first_of('<');
-				size end = path.find_first_of('>');
+				tsize start = path.find_first_of('<');
+				tsize end = path.find_first_of('>');
 				if (end == tstring::npos)
 				{
 					LOG(LogLevel::Error, "리소스 파일 분석 오류");
@@ -113,9 +114,9 @@ namespace DS
 		}
 		else
 		{
-			size nameStart = name.find('<');
-			size nameEnd = name.find('>');
-			size nameMid = name.find('|');
+			tsize nameStart = name.find('<');
+			tsize nameEnd = name.find('>');
+			tsize nameMid = name.find('|');
 
 			tstring startNumStr = name.substr(nameStart + 1, nameMid - nameStart - 1);
 			int32 startNum = std::stoi(startNumStr);
@@ -123,9 +124,9 @@ namespace DS
 			tstring endNumStr = name.substr(nameMid + 1, nameEnd - nameMid - 1);
 			int32 endNum = std::stoi(endNumStr);
 
-			size pathMid = path.find('|');
-			size pathStart = path.find_last_of('<', pathMid);
-			size pathEnd = path.find('>', pathMid);
+			tsize pathMid = path.find('|');
+			tsize pathStart = path.find_last_of('<', pathMid);
+			tsize pathEnd = path.find('>', pathMid);
 
 			if (endNum <= startNum)
 			{
@@ -160,7 +161,7 @@ namespace DS
 
 		tstring path = m_Paths[name];
 
-		size dotPos = path.find_last_of('.');
+		tsize dotPos = path.find_last_of('.');
 		if (dotPos == tstring::npos)
 		{
 			LOG(LogLevel::Error, "리소스 파일의 확장자 없음");
@@ -171,7 +172,7 @@ namespace DS
 
 		std::ifstream stream(path, std::ios_base::binary);
 		stream.seekg(0, std::ios_base::end);
-		size len = static_cast<size>(stream.tellg());
+		tsize len = static_cast<tsize>(stream.tellg());
 		stream.seekg(0, std::ios_base::beg);
 
 		int8 * buffer = new int8[len];
@@ -185,6 +186,8 @@ namespace DS
 		m_Resources[name] = resource;
 
 		delete[] buffer;
+
+		return true;
 	}
 
 	void ResourceManager::unloadResource(tstring name)
@@ -194,5 +197,26 @@ namespace DS
 		m_Factories[resource->m_Extension]->free(resource);
 
 		m_Resources.erase(name);
+	}
+
+	void ResourceManager::addResourceType(tstring extension, Factory& factory)
+	{
+		if (m_Factories.count(extension) > 0)
+		{
+			LOG(LogLevel::Warning, "리소스 팩토리 중복 추가");
+			return;
+		}
+
+		m_Factories[extension] = &factory;
+	}
+
+	Resource& ResourceManager::getResource(tstring name)
+	{
+		if (m_Resources.count(name) < 1)
+		{
+			LOG(LogLevel::Error, "없는 리소스 참조");
+		}
+
+		return *m_Resources[name];
 	}
 }

@@ -22,7 +22,7 @@ using float32 = float;
 using float64 = double;
 using float128 = long double;
 
-using size = size_t;
+using tsize = size_t;
 
 using tstring = std::string;
 using tstringstream = std::stringstream;

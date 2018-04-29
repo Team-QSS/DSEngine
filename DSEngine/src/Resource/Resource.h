@@ -8,7 +8,7 @@ namespace DS
 	{
 	public:
 		friend ResourceManager;
-		Resource(int8* buffer);
+		Resource(int8* buffer, tsize len);
 		virtual ~Resource();
 
 		const tstring& getExtension();

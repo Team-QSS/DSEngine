@@ -4,13 +4,13 @@
 namespace DS
 {
 	template<typename T>
-	void * ResourceFactory<T>::alloc(int8 * buffer)
+	void * ResourceFactory<T>::alloc(int8 * buffer, tsize len)
 	{
-		return new T(buffer);
+		return new T(buffer, len);
 	}
 
 	template<typename T>
-	void ResourceFactory<T>::free(void * resource, size_t n)
+	void ResourceFactory<T>::free(void * resource, tsize n)
 	{
 		if (n == 1)
 		{

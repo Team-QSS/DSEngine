@@ -16,9 +16,9 @@ namespace DS
 	{
 	public:
 		friend Singleton<ResourceFactory<T>>;
-		virtual void * alloc(int8 * buffer) override;
-		virtual void ** alloc(int8 ** buffer, size n) override;
-		virtual void free(void * resource, size_t n) override;
+		virtual void * alloc(int8 * buffer, tsize len) override;
+		//virtual void ** alloc(int8 ** buffer, tsize n) override;
+		virtual void free(void * resource, tsize n) override;
 
 	private:
 		ResourceFactory() = default;

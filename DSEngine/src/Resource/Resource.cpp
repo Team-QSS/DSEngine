@@ -4,7 +4,7 @@
 
 namespace DS
 {
-	Resource::Resource(int8* buffer)
+	Resource::Resource(int8* buffer, tsize len)
 	{
 		
 	}

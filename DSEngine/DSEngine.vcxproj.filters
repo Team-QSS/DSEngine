@@ -144,6 +144,9 @@
     <ClCompile Include="src\Resource\Resource.cpp">
       <Filter>소스 파일\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="src\Resource\PNGImage.cpp">
+      <Filter>소스 파일\Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Utils\Logger.h">
@@ -236,6 +239,9 @@
     <ClInclude Include="Texture.h">
       <Filter>헤더 파일\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="src\Resource\PNGImage.h">
+      <Filter>헤더 파일\Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Utils\Singleton.inl">
@@ -245,9 +251,6 @@
       <Filter>소스 파일\Object</Filter>
     </None>
     <None Include="src\Resource\ResourceFactory.inl">
-      <Filter>소스 파일\Resource</Filter>
-    </None>
-    <None Include="src\Resource\ResourceManager.inl">
       <Filter>소스 파일\Resource</Filter>
     </None>
     <None Include="Resources.dsr" />
