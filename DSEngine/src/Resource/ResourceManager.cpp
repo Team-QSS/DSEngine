@@ -180,7 +180,7 @@ namespace DS
 		stream.read(reinterpret_cast<char *>(buffer), len);
 		stream.close();
 
-		Resource * resource = reinterpret_cast<Resource *>(m_Factories[extension]->alloc(buffer));
+		Resource * resource = reinterpret_cast<Resource *>(m_Factories[extension]->alloc(buffer, len));
 		resource->m_Extension = extension;
 
 		m_Resources[name] = resource;

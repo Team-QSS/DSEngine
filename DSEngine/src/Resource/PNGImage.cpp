@@ -1,5 +1,6 @@
 #include "../Defines.h"
 #include "PNGImage.h"
+#include "../Utils/Utils.h"
 #define STB_IMAGE_IMPLEMENTATION
 #define STBI_ONLY_PNG
 #include "../STB/stb_image.h"
@@ -17,11 +18,15 @@ namespace DS
 					&m_Height,
 					&m_Channel,
 					0));
+		if (m_Buffer != NULL)
+		{
+			LOG(LogLevel::Debug, "PNGImage 로드 성공");
+		}
 	}
 
 	PNGImage::~PNGImage()
 	{
-		delete[] m_Buffer;
+		STBI_FREE(m_Buffer);
 	}
 
 	int32 PNGImage::getWidth() const
