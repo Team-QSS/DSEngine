@@ -4,7 +4,7 @@
 
 namespace DS
 {
-	Resource::Resource(int8 *buffer)
+	Resource::Resource(int8* buffer, tsize len)
 	{
 		
 	}
@@ -14,4 +14,8 @@ namespace DS
 		
 	}
 
+	const tstring& Resource::getExtension()
+	{
+		return m_Extension;
+	}
 }

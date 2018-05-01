@@ -1,5 +1,7 @@
 #include "DSEngine.h"
 #include "Graphics\ShaderManager.h"
+#include "Resource\PNGImage.h"
+#include "Resource\ResourceFactory.h"
 
 namespace DS
 {
@@ -45,6 +47,8 @@ namespace DS
 
 		ShaderManager::createInstance();
 
+		ResourceManager::createInstance();
+
 		m_InputManager = &InputManager::getInstance();
 		m_Window = &Window::getInstance();
 		m_SceneManager = &SceneManager::getInstance();
@@ -56,6 +60,8 @@ namespace DS
 		m_Game->initialize();
 
 		m_IsRunning = true;
+
+		ResourceManager::getInstance().addResourceType("png", ResourceFactory<PNGImage>::getInstance());
 	}
 
 	void DSEngine::run()

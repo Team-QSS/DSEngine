@@ -46,8 +46,6 @@ namespace DS
 
 	void InputManager::updateMouseState()
 	{
-		bool temp;
-
 		//현재 상태를 이전 프레임의 상태로 변환
 		m_PreKeyState[0] = m_CurMouseState[0];
 		m_PreKeyState[1] = m_CurMouseState[1];

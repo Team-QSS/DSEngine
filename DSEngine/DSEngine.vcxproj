@@ -76,6 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -84,6 +85,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -94,6 +96,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -108,6 +111,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -125,6 +129,7 @@
     <ClCompile Include="src\Graphics\ShaderManager.cpp" />
     <ClCompile Include="src\Input\InputManager.cpp" />
     <ClCompile Include="src\Object\Object.cpp" />
+    <ClCompile Include="src\Resource\PNGImage.cpp" />
     <ClCompile Include="src\Resource\Resource.cpp" />
     <ClCompile Include="src\Resource\ResourceManager.cpp" />
     <ClCompile Include="src\Scene\Scene.cpp" />
@@ -150,6 +155,7 @@
     <ClInclude Include="src\Graphics\ShaderManager.h" />
     <ClInclude Include="src\Input\InputManager.h" />
     <ClInclude Include="src\Object\Object.h" />
+    <ClInclude Include="src\Resource\PNGImage.h" />
     <ClInclude Include="src\Resource\Resource.h" />
     <ClInclude Include="src\Resource\ResourceFactory.h" />
     <ClInclude Include="src\Resource\ResourceManager.h" />
@@ -174,7 +180,6 @@
   <ItemGroup>
     <None Include="src\Object\Object.inl" />
     <None Include="src\Resource\ResourceFactory.inl" />
-    <None Include="src\Resource\ResourceManager.inl" />
     <None Include="src\Utils\Singleton.inl" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +192,16 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resource.res규칙.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources.dsr">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Sample.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

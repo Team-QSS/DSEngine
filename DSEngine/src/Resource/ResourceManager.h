@@ -1,10 +1,10 @@
 #pragma once
 #include "../Utils/Utils.h"
+#include "../Defines.h"
 #include <map>
 #include <functional>
 #include "Resource.h"
 #include "ResourceFactory.h"
-//#include "ResourcePath.h"
 
 namespace DS
 {
@@ -17,16 +17,15 @@ namespace DS
 		 * extension : 확장자, factory : 해당 리소스를 생성하는 팩토리
 		 * ResourceFactory<ResourceType>::getInstance()로 넣으면 됨
 		 */
-		template <typename T>
 		void addResourceType(tstring extension, Factory& factory);
 
 		bool loadResource(tstring name);
-		bool loadSet(tstring name);
+		//bool loadSet(tstring name);
 
 		void unloadResource(tstring name);
-		void unloadSet(tstring name);
+		//void unloadSet(tstring name);
 
-		void moveSet(tstring unloadingSet, tstring loadingSet);
+		//void moveSet(tstring unloadingSet, tstring loadingSet);
 
 		Resource& getResource(tstring name);
 
