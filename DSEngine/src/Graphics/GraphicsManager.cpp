@@ -146,16 +146,28 @@ namespace DS
 
 		D3D11_BUFFER_DESC matrixBufferDesc;
 		matrixBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
-		matrixBufferDesc.ByteWidth = sizeof(DirectX::XMMATRIX);
+		matrixBufferDesc.ByteWidth = sizeof(DirectX::XMFLOAT4X4);
 		matrixBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 		matrixBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 		matrixBufferDesc.MiscFlags = 0;
 		matrixBufferDesc.StructureByteStride = 0;
 
-		result = m_Device->CreateBuffer(&matrixBufferDesc, nullptr, &m_MatrixBuffer);
-
-
 		XMStoreFloat4x4(&m_OrthoMatrix, ortho);
+		
+		D3D11_SUBRESOURCE_DATA matrixResourceData;
+		matrixResourceData.pSysMem = &m_OrthoMatrix;
+		matrixResourceData.SysMemPitch = 0;
+		matrixResourceData.SysMemSlicePitch = 0;
+
+		result = m_Device->CreateBuffer(&matrixBufferDesc, &matrixResourceData, &m_MatrixBuffer);
+		if (FAILED(result))
+		{
+			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Create ConstantBuffer Error");
+		}
+		
+		
+
+		
 	}
 
 	ID3D11Device * GraphicsManager::getDevice()
@@ -171,9 +183,8 @@ namespace DS
 	void GraphicsManager::beginDraw()
 	{
 		DirectX::XMMATRIX ortho = DirectX::XMLoadFloat4x4(&m_OrthoMatrix);
-		
+		 
 		D3D11_MAPPED_SUBRESOURCE mappedResource;
-		DirectX::XMMATRIX* dataPtr;
 
 		HRESULT result;
 		result = m_DeviceContext->Map(m_MatrixBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
@@ -181,11 +192,11 @@ namespace DS
 		{
 			LOG_WITH_TAG(LogLevel::Error, "DirectX", "Draw Failed");
 		}
-		dataPtr = (DirectX::XMMATRIX*)mappedResource.pData;
 
-		dataPtr = &ortho;
+		DirectX::XMStoreFloat4x4(static_cast<DirectX::XMFLOAT4X4 *>(mappedResource.pData), DirectX::XMMatrixTranspose(ortho));
 
 		m_DeviceContext->Unmap(m_MatrixBuffer, 0);
+
 		m_DeviceContext->VSSetConstantBuffers(1, 1, &m_MatrixBuffer);
 		
 
