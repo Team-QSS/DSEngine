@@ -10,7 +10,7 @@ using namespace std;
 class TestObject : public DS::Object
 {
 public:
-	TestObject() { addComponent(*(new DS::SquareComponent({ 1, 1 }))); }
+	TestObject() { addComponent(*(new DS::SquareComponent({ 300, 300 }))); }
 protected:
 	virtual void onUpdate(DS::Context& context) override 
 	{

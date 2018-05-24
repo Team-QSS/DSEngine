@@ -11,6 +11,6 @@ cbuffer OrthoMatrixBuffer
 float4 main( float4 pos : POSITION ) : SV_POSITION
 {
 	pos = mul(pos, worldMatrix);
-	//pos = mul(pos, orthoMatrix);
+	pos = mul(pos, orthoMatrix);
 	return pos;
 }

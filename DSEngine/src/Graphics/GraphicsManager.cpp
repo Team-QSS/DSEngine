@@ -140,9 +140,8 @@ namespace DS
 		m_DeviceContext->OMSetRenderTargets(1, &m_RenderTargetView, m_DepthStencilView);
 
 
-		DirectX::XMMATRIX ortho = DirectX::XMMatrixOrthographicLH(1920.0f, 1080.f, 0.0f, 100.0f);
+		DirectX::XMMATRIX ortho = DirectX::XMMatrixOrthographicLH(800.0f, 600.f, 0.0f, 100.0f);
 
-		
 
 		D3D11_BUFFER_DESC matrixBufferDesc;
 		matrixBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
